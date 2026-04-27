@@ -37,10 +37,10 @@ int main() {
 
         if (input.rfind("Newgraph ", 0) == 0) 
         {
-            int amount = 0;
-            amount = stoi(input.substr(9));
-            points.reserve(amount);
-            for (int i = 0; i < amount; i++)
+            int n = 0;
+            n = stoi(input.substr(9));
+            points.reserve(n);
+            for (int i = 0; i < n; i++)
             {
                 cin >> input;
 

@@ -3,12 +3,11 @@ Flat profile:
 Each sample counts as 0.01 seconds.
   %   cumulative   self              self     total           
  time   seconds   seconds    calls  ms/call  ms/call  name    
- 54.84      0.17     0.17                             main
- 45.16      0.31     0.14        2    70.00    70.00  void std::__introsort_loop<__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, long, __gnu_cxx::__ops::_Iter_comp_iter<main::{lambda(Point const&, Point const&)#1}> >(__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, __gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, long, __gnu_cxx::__ops::_Iter_comp_iter<main::{lambda(Point const&, Point const&)#1}>)
-  0.00      0.31     0.00  4000000     0.00     0.00  std::vector<Point, std::allocator<Point> >::push_back(Point const&)
-  0.00      0.31     0.00        7     0.00     0.00  void std::vector<Point, std::allocator<Point> >::_M_realloc_insert<Point const&>(__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, Point const&)
-  0.00      0.31     0.00        2     0.00     0.00  std::_Vector_base<Point, std::allocator<Point> >::~_Vector_base()
-  0.00      0.31     0.00        1     0.00     0.00  polygonArea(std::vector<Point, std::allocator<Point> > const&)
+ 52.50      0.21     0.21                             main
+ 47.50      0.40     0.19        2    95.00    95.00  void std::__introsort_loop<__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, long, __gnu_cxx::__ops::_Iter_comp_iter<main::{lambda(Point const&, Point const&)#1}> >(__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, __gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, long, __gnu_cxx::__ops::_Iter_comp_iter<main::{lambda(Point const&, Point const&)#1}>)
+  0.00      0.40     0.00        7     0.00     0.00  void std::vector<Point, std::allocator<Point> >::_M_realloc_insert<Point const&>(__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, Point const&)
+  0.00      0.40     0.00        2     0.00     0.00  std::_Vector_base<Point, std::allocator<Point> >::~_Vector_base()
+  0.00      0.40     0.00        1     0.00     0.00  polygonArea(std::vector<Point, std::allocator<Point> > const&)
 
  %         the percentage of the total running time of the
 time       program used by this function.
@@ -46,33 +45,29 @@ notice and this notice are preserved.
 		     Call graph (explanation follows)
 
 
-granularity: each sample hit covers 4 byte(s) for 3.23% of 0.31 seconds
+granularity: each sample hit covers 4 byte(s) for 2.50% of 0.40 seconds
 
 index % time    self  children    called     name
                                                  <spontaneous>
-[1]    100.0    0.17    0.14                 main [1]
-                0.14    0.00       2/2           void std::__introsort_loop<__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, long, __gnu_cxx::__ops::_Iter_comp_iter<main::{lambda(Point const&, Point const&)#1}> >(__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, __gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, long, __gnu_cxx::__ops::_Iter_comp_iter<main::{lambda(Point const&, Point const&)#1}>) [2]
-                0.00    0.00 4000000/4000000     std::vector<Point, std::allocator<Point> >::push_back(Point const&) [9]
-                0.00    0.00       7/7           void std::vector<Point, std::allocator<Point> >::_M_realloc_insert<Point const&>(__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, Point const&) [10]
-                0.00    0.00       2/2           std::_Vector_base<Point, std::allocator<Point> >::~_Vector_base() [11]
-                0.00    0.00       1/1           polygonArea(std::vector<Point, std::allocator<Point> > const&) [12]
+[1]    100.0    0.21    0.19                 main [1]
+                0.19    0.00       2/2           void std::__introsort_loop<__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, long, __gnu_cxx::__ops::_Iter_comp_iter<main::{lambda(Point const&, Point const&)#1}> >(__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, __gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, long, __gnu_cxx::__ops::_Iter_comp_iter<main::{lambda(Point const&, Point const&)#1}>) [2]
+                0.00    0.00       7/7           void std::vector<Point, std::allocator<Point> >::_M_realloc_insert<Point const&>(__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, Point const&) [9]
+                0.00    0.00       2/2           std::_Vector_base<Point, std::allocator<Point> >::~_Vector_base() [10]
+                0.00    0.00       1/1           polygonArea(std::vector<Point, std::allocator<Point> > const&) [11]
 -----------------------------------------------
                               208271             void std::__introsort_loop<__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, long, __gnu_cxx::__ops::_Iter_comp_iter<main::{lambda(Point const&, Point const&)#1}> >(__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, __gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, long, __gnu_cxx::__ops::_Iter_comp_iter<main::{lambda(Point const&, Point const&)#1}>) [2]
-                0.14    0.00       2/2           main [1]
-[2]     45.2    0.14    0.00       2+208271  void std::__introsort_loop<__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, long, __gnu_cxx::__ops::_Iter_comp_iter<main::{lambda(Point const&, Point const&)#1}> >(__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, __gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, long, __gnu_cxx::__ops::_Iter_comp_iter<main::{lambda(Point const&, Point const&)#1}>) [2]
+                0.19    0.00       2/2           main [1]
+[2]     47.5    0.19    0.00       2+208271  void std::__introsort_loop<__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, long, __gnu_cxx::__ops::_Iter_comp_iter<main::{lambda(Point const&, Point const&)#1}> >(__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, __gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, long, __gnu_cxx::__ops::_Iter_comp_iter<main::{lambda(Point const&, Point const&)#1}>) [2]
                               208271             void std::__introsort_loop<__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, long, __gnu_cxx::__ops::_Iter_comp_iter<main::{lambda(Point const&, Point const&)#1}> >(__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, __gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, long, __gnu_cxx::__ops::_Iter_comp_iter<main::{lambda(Point const&, Point const&)#1}>) [2]
------------------------------------------------
-                0.00    0.00 4000000/4000000     main [1]
-[9]      0.0    0.00    0.00 4000000         std::vector<Point, std::allocator<Point> >::push_back(Point const&) [9]
 -----------------------------------------------
                 0.00    0.00       7/7           main [1]
-[10]     0.0    0.00    0.00       7         void std::vector<Point, std::allocator<Point> >::_M_realloc_insert<Point const&>(__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, Point const&) [10]
+[9]      0.0    0.00    0.00       7         void std::vector<Point, std::allocator<Point> >::_M_realloc_insert<Point const&>(__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, Point const&) [9]
 -----------------------------------------------
                 0.00    0.00       2/2           main [1]
-[11]     0.0    0.00    0.00       2         std::_Vector_base<Point, std::allocator<Point> >::~_Vector_base() [11]
+[10]     0.0    0.00    0.00       2         std::_Vector_base<Point, std::allocator<Point> >::~_Vector_base() [10]
 -----------------------------------------------
                 0.00    0.00       1/1           main [1]
-[12]     0.0    0.00    0.00       1         polygonArea(std::vector<Point, std::allocator<Point> > const&) [12]
+[11]     0.0    0.00    0.00       1         polygonArea(std::vector<Point, std::allocator<Point> > const&) [11]
 -----------------------------------------------
 
  This table describes the call tree of the program, and was sorted by
@@ -165,5 +160,5 @@ notice and this notice are preserved.
 
 Index by function name
 
-  [12] polygonArea(std::vector<Point, std::allocator<Point> > const&) [10] void std::vector<Point, std::allocator<Point> >::_M_realloc_insert<Point const&>(__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, Point const&) [2] void std::__introsort_loop<__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, long, __gnu_cxx::__ops::_Iter_comp_iter<main::{lambda(Point const&, Point const&)#1}> >(__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, __gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, long, __gnu_cxx::__ops::_Iter_comp_iter<main::{lambda(Point const&, Point const&)#1}>) (stl_algo.h)
-  [11] std::_Vector_base<Point, std::allocator<Point> >::~_Vector_base() [9] std::vector<Point, std::allocator<Point> >::push_back(Point const&) [1] main
+  [11] polygonArea(std::vector<Point, std::allocator<Point> > const&) [9] void std::vector<Point, std::allocator<Point> >::_M_realloc_insert<Point const&>(__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, Point const&) [1] main
+  [10] std::_Vector_base<Point, std::allocator<Point> >::~_Vector_base() [2] void std::__introsort_loop<__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, long, __gnu_cxx::__ops::_Iter_comp_iter<main::{lambda(Point const&, Point const&)#1}> >(__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, __gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, long, __gnu_cxx::__ops::_Iter_comp_iter<main::{lambda(Point const&, Point const&)#1}>) (stl_algo.h)

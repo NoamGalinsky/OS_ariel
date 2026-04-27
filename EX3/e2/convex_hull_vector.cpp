@@ -27,22 +27,12 @@ double polygonArea(const vector<Point>& hull) {
     return fabs(area) / 2.0;
 }
 
-int main(int argc, char* argv[]) {
-    if (argc < 2) {
-        cerr << "Error: Missing input file argument.\n";
-        return 1;
-    }
-
-    ifstream file(argv[1]);
-    if (!file) {
-        cerr << "Error: Cannot open file.\n";
-        return 1;
-    }
+int main() {
 
     int n;
-    file >> n;
+    cin >> n;
 
-    if (!file || n < 3) {
+    if (n < 3) {
         cerr << "Error: Invalid number of points.\n";
         return 1;
     }
@@ -51,11 +41,11 @@ int main(int argc, char* argv[]) {
     points.reserve(n);
 
     string line;
-    getline(file, line); // consume endline
-
+    getline(cin, line);
+    
     // Read points in format: x,y
     for (int i = 0; i < n; i++) {
-        if (!getline(file, line)) {
+        if (!getline(cin, line)) {
             cerr << "Error: Not enough point lines.\n";
             return 1;
         }
