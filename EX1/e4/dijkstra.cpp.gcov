@@ -1,0 +1,139 @@
+        -:    0:Source:dijkstra.cpp
+        -:    0:Graph:dijkstra.gcno
+        -:    0:Data:dijkstra.gcda
+        -:    0:Runs:5
+        -:    1:#include <iostream>
+        -:    2:#include <vector>
+        -:    3:#include <climits>
+        -:    4:#include <sstream>
+        -:    5:
+        -:    6:using namespace std;
+        -:    7:
+        -:    8:// Function to find the vertex with the minimum distance value
+        -:    9:// from the set of vertices not yet included in shortest path tree
+        1:   10:int minDistance(const vector<int>& dist, const vector<bool>& sptSet)
+        -:   11:{
+        1:   12:    int min = INT_MAX;      // Initialize minimum value
+        1:   13:    int min_index = -1;     // Index of minimum value
+        -:   14:
+        -:   15:    // Loop through all vertices
+        3:   16:    for (size_t v = 0; v < dist.size(); v++)
+        -:   17:    {
+        -:   18:        // If vertex is not yet processed and has smaller distance
+        2:   19:        if (!sptSet[v] && dist[v] <= min)
+        -:   20:        {
+        1:   21:            min = dist[v];
+        1:   22:            min_index = v;
+        -:   23:        }
+        -:   24:    }
+        1:   25:    return min_index; // Return index of minimum distance vertex
+        -:   26:}
+        -:   27:
+        -:   28:// Function to print the calculated shortest distances
+        1:   29:void printSolution(const vector<int>& dist)
+        -:   30:{
+        1:   31:    cout << "Vertex\tDistance from Source" << endl;
+        -:   32:
+        -:   33:    // Print distance of each vertex from source
+        3:   34:    for (size_t i = 0; i < dist.size(); i++)
+        2:   35:        cout << i << "\t\t" << dist[i] << endl;
+        1:   36:}
+        -:   37:/* The dijkstra is from the site geeksforgeeks with help of chat GPT */
+        -:   38:// Dijkstra's algorithm implementation
+        1:   39:void dijkstra(const vector<vector<int>>& graph, int src)
+        -:   40:{
+        1:   41:    int n = graph.size();                 // Number of vertices
+        1:   42:    vector<int> dist(n, INT_MAX);         // Distance array (initialized to infinity)
+        1:   43:    vector<bool> sptSet(n, false);        // Shortest Path Tree set (processed vertices)
+        -:   44:
+        1:   45:    dist[src] = 0;                       // Distance from source to itself is 0
+        -:   46:
+        -:   47:    // Main loop - run n-1 times
+        2:   48:    for (int count = 0; count < n - 1; count++)
+        -:   49:    {
+        -:   50:        // Pick the minimum distance vertex not yet processed
+        1:   51:        int u = minDistance(dist, sptSet);
+       1*:   52:        if (u == -1) break; // Stop if no reachable vertex is found
+        -:   53:
+        1:   54:        sptSet[u] = true;   // Mark the picked vertex as processed
+        -:   55:
+        -:   56:        // Update distance value of adjacent vertices
+        3:   57:        for (int v = 0; v < n; v++)
+        -:   58:        {
+        -:   59:            // Update dist[v] only if:
+        -:   60:            // 1. v is not processed
+        -:   61:            // 2. There is an edge from u to v (non-zero weight)
+        -:   62:            // 3. Current distance to u is not infinity
+        -:   63:            // 4. New calculated distance is smaller than current dist[v]
+        2:   64:            if (!sptSet[v] &&
+        1:   65:                graph[u][v] != 0 &&
+        4:   66:                dist[u] != INT_MAX &&
+        1:   67:                dist[u] + graph[u][v] < dist[v])
+        -:   68:            {
+        1:   69:                dist[v] = dist[u] + graph[u][v];
+        -:   70:            }
+        -:   71:        }
+        -:   72:    }
+        -:   73:
+        -:   74:    // Print final shortest distances
+        1:   75:    printSolution(dist);
+        1:   76:}
+        -:   77:
+        5:   78:int main()
+        -:   79:{
+        -:   80:    size_t num_of_vers;
+        -:   81:
+        5:   82:    cout << "Enter number of vertices: " << endl;
+        5:   83:    cin >> num_of_vers;
+        -:   84:
+        -:   85:    // Clear leftover newline after reading the number
+        5:   86:    cin.ignore();
+        -:   87:
+        -:   88:    // Create adjacency matrix
+       10:   89:    vector<vector<int>> graph(num_of_vers, vector<int>(num_of_vers));
+        -:   90:
+        8:   91:    for (size_t i = 0; i < num_of_vers; i++)
+        -:   92:    {
+        7:   93:        string line;
+        -:   94:        // Read entire line from user
+        7:   95:        getline(cin, line);
+        -:   96:        // Convert line into stream
+        7:   97:        stringstream ss(line);    
+        7:   98:        vector<int> row;
+        -:   99:        int value;
+        -:  100:
+        -:  101:        // Extract integers from the line
+       21:  102:        while (ss >> value)
+        -:  103:        {
+       14:  104:            row.push_back(value);
+        -:  105:        }
+        7:  106:        if (row.size() > num_of_vers)
+        -:  107:        {
+        1:  108:            cout << "ERROR! too many distances\n";
+        1:  109:            return 1;
+        -:  110:        }
+        6:  111:        if (row.size() < num_of_vers)
+        -:  112:        {
+        1:  113:            cout << "ERROR! too few distances\n";
+        1:  114:            return 1;
+        -:  115:        }
+        -:  116:
+       13:  117:        for (size_t j = 0; j < num_of_vers; j++)
+        -:  118:        {
+       10:  119:            if (row[j] < 0)
+        -:  120:            {
+        1:  121:                cout << "ERROR! Dijkstra does not support negative weights!\n";
+        1:  122:                return 1;
+        -:  123:            }
+        9:  124:            if (i == j && row[j] != 0)
+        -:  125:            {
+        1:  126:                cout << "ERROR! distance from vertex to itself must be 0\n";
+        1:  127:                return 1;
+        -:  128:            }
+        -:  129:
+        8:  130:            graph[i][j] = row[j];
+        -:  131:        }
+       15:  132:    }
+        1:  133:    dijkstra(graph, 0);
+        1:  134:    return 0;
+        5:  135:}

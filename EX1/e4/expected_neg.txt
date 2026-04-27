@@ -1,0 +1,2 @@
+Enter number of vertices: 
+ERROR! Dijkstra does not support negative weights!

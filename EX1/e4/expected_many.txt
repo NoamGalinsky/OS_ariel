@@ -1,0 +1,2 @@
+Enter number of vertices: 
+ERROR! too many distances

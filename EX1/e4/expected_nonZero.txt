@@ -1,0 +1,2 @@
+Enter number of vertices: 
+ERROR! distance from vertex to itself must be 0
