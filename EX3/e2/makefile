@@ -11,4 +11,4 @@ convex_hull_list: convex_hull_list.cpp
 	$(CXX) $(CXXFLAGS) -o convex_hull_list convex_hull_list.cpp
 
 clean:
-	rm -f $(TARGETS)
+	rm -f $(TARGETS) gmon.out

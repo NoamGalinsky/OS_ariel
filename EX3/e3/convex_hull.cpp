@@ -33,12 +33,13 @@ int main() {
     while(true)
     {
         string input;
-        getline(std::cin, input);
+        getline(cin, input);
 
-        if (input.rfind("Newgraph ", 0) == 0) 
+        if (input.rfind("Newgraph ", 0) == 0)
         {
             int n = 0;
             n = stoi(input.substr(9));
+            points.clear();
             points.reserve(n);
             for (int i = 0; i < n; i++)
             {
@@ -48,15 +49,15 @@ int main() {
                 stringstream ss(input);
                 Point p;
                 if (!(ss >> p.x >> p.y)) {
-                    cerr << "Error: Invalid point format.\n";
-                    return 1;
+                    cerr << "Error: Invalid point format. Try again with: <x>,<y>\n";
+                    continue;
                 }
                 points.push_back(p);
             }
+            getline(cin, input); // consume trailing newline
             cout << "The graph is build.\n";
-
         }
-        if (input.rfind("CH", 0) == 0) 
+        else if (input == "CH")
         {
             // Sort points lexicographically
             sort(points.begin(), points.end(), [](const Point& a, const Point& b) {
@@ -90,21 +91,20 @@ int main() {
 
             cout << "Convex Hull Area: " << area << endl;
         }
-        if (input.rfind("Newpoint ", 0) == 0) 
+        else if (input.rfind("Newpoint ", 0) == 0)
         {
             input = input.substr(9);
             replace(input.begin(), input.end(), ',', ' ');
             stringstream ss(input);
             Point p;
             if (!(ss >> p.x >> p.y)) {
-                cerr << "Error: Invalid point format.\n";
-                return 1;
+                cerr << "Error: Invalid point format. Try again with: Newpoint <x>,<y>\n";
+                continue;
             }
             points.push_back(p);
             cout << "The point is added.\n";
         }
-
-        if (input.rfind("Removepoint ", 0) == 0) 
+        else if (input.rfind("Removepoint ", 0) == 0)
         {
             bool removed = false;
             input = input.substr(12);
@@ -112,8 +112,8 @@ int main() {
             stringstream ss(input);
             Point p;
             if (!(ss >> p.x >> p.y)) {
-                cerr << "Error: Invalid point format.\n";
-                return 1;
+                cerr << "Error: Invalid point format. Try again with: Removepoint <x>,<y>\n";
+                continue;
             }
             for (size_t i = 0; i < points.size(); i++)
             {
@@ -124,20 +124,21 @@ int main() {
             }
             if (removed)
                 cout << "The point is removed.\n";
-            else    
+            else
                 cout << "The point not exist.\n";
-
         }
-
-
-
-
-
-
-
-
-        
-
+        else if (cin.eof())
+        {
+            break;
+        }
+        else
+        {
+            cerr << "USAGE:\n"
+                 << "  Newgraph <n>        - create new graph, then enter n lines of: <x>,<y>\n"
+                 << "  CH                  - compute convex hull area\n"
+                 << "  Newpoint <x>,<y>    - add a point\n"
+                 << "  Removepoint <x>,<y> - remove a point\n";
+        }
 
     }
     return 0;
