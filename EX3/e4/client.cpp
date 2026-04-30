@@ -57,9 +57,7 @@ int main()
     std::string input;
     std::string input2;
 
-    while (true) {
-        std::getline(std::cin, input);
-
+    while (std::getline(std::cin, input)) {
         send(sockfd, input.c_str(), input.size(), 0);
     }
 

@@ -219,8 +219,9 @@ void handle_client_data(int *fd_count,
     } else { // We got some good data from a client
         printf("pollserver: recv from fd %d: %.*s\n", sender_fd,
                 nbytes, buf);
-        string input = buf;
-        if (input.rfind("Newgraph ", 0) == 0) 
+        buf[nbytes] = '\0';
+        string input(buf, nbytes);
+        if (input.rfind("Newgraph ", 0) == 0)
         {
             int amount = 0;
             amount = stoi(input.substr(9));
@@ -229,20 +230,22 @@ void handle_client_data(int *fd_count,
             for (int i = 0; i < amount; i++)
             {
                 nbytes = recv(pfds[*pfd_i].fd, buf, sizeof buf, 0);
-                input = buf;
+                if (nbytes <= 0) continue;
+                buf[nbytes] = '\0';
+                input = string(buf, nbytes);
                 replace(input.begin(), input.end(), ',', ' ');
                 stringstream ss(input);
                 Point p;
                 if (!(ss >> p.x >> p.y)) {
-                    cerr << "Error: Invalid point format.\n";
-                    exit(1);
+                    cerr << "Error: Invalid point format. Try again with: <x>,<y>\n";
+                    continue;
                 }
                 points.push_back(p);
             }
             cout << "The graph is build.\n";
 
         }
-        if (input.rfind("CH", 0) == 0) 
+        else if (input == "CH")
         {
             // Sort points lexicographically
             sort(points.begin(), points.end(), [](const Point& a, const Point& b) {
@@ -276,22 +279,20 @@ void handle_client_data(int *fd_count,
 
             cout << "Convex Hull Area: " << area << endl;
         }
-        if (input.rfind("Newpoint ", 0) == 0) 
+        else if (input.rfind("Newpoint ", 0) == 0)
         {
             input = input.substr(9);
             replace(input.begin(), input.end(), ',', ' ');
             stringstream ss(input);
             Point p;
             if (!(ss >> p.x >> p.y)) {
-                cerr << "Error: Invalid point format.\n";
-                exit(1);
-
+                cerr << "Error: Invalid point format. Try again with: <x>,<y>\n";
+                return;
             }
             points.push_back(p);
             cout << "The point is added.\n";
         }
-
-        if (input.rfind("Removepoint ", 0) == 0) 
+        else if (input.rfind("Removepoint ", 0) == 0)
         {
             bool removed = false;
             input = input.substr(12);
@@ -299,8 +300,8 @@ void handle_client_data(int *fd_count,
             stringstream ss(input);
             Point p;
             if (!(ss >> p.x >> p.y)) {
-                cerr << "Error: Invalid point format.\n";
-                exit(1);
+                cerr << "Error: Invalid point format. Try again with: <x>,<y>\n";
+                return;
             }
             for (size_t i = 0; i < points.size(); i++)
             {
@@ -311,9 +312,18 @@ void handle_client_data(int *fd_count,
             }
             if (removed)
                 cout << "The point is removed.\n";
-            else    
+            else
                 cout << "The point not exist.\n";
 
+        }
+        else
+        {
+            cerr << "USAGE:\n"
+                 << "  Newgraph <n>        - create new graph, then enter n lines of: <x>,<y>\n"
+                 << "  CH                  - compute convex hull area\n"
+                 << "  Newpoint <x>,<y>    - add a point\n"
+                 << "  Removepoint <x>,<y> - remove a point\n"
+                 << "  ctrl+D              - close\n";
         }
     }
 }

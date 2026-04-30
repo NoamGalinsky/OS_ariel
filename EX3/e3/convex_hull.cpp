@@ -137,7 +137,8 @@ int main() {
                  << "  Newgraph <n>        - create new graph, then enter n lines of: <x>,<y>\n"
                  << "  CH                  - compute convex hull area\n"
                  << "  Newpoint <x>,<y>    - add a point\n"
-                 << "  Removepoint <x>,<y> - remove a point\n";
+                 << "  Removepoint <x>,<y> - remove a point\n"
+                 << "  ctrl+D              - close\n";
         }
 
     }
