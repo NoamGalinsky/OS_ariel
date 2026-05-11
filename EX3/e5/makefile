@@ -1,14 +1,10 @@
 CXX = g++
 CXXFLAGS = -Wall -Wextra -O2 -g -std=c++17
-TARGETS = client server
 
-all: $(TARGETS)
+all: reactor.o
 
-server: server.cpp reactor.cpp reactor.hpp
-	$(CXX) $(CXXFLAGS) -o server server.cpp reactor.cpp -lpthread
-
-client: client.cpp
-	$(CXX) $(CXXFLAGS) -o client client.cpp
+reactor.o: reactor.cpp reactor.hpp
+	$(CXX) $(CXXFLAGS) -c reactor.cpp -o reactor.o
 
 clean:
-	rm -f $(TARGETS)
+	rm -f reactor.o
