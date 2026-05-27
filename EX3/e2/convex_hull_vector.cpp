@@ -1,5 +1,4 @@
 #include <iostream>
-#include <fstream>
 #include <vector>
 #include <algorithm>
 #include <sstream>
@@ -41,8 +40,8 @@ int main() {
     points.reserve(n);
 
     string line;
-    getline(cin, line);
-    
+    getline(cin, line); // consume trailing newline
+
     // Read points in format: x,y
     for (int i = 0; i < n; i++) {
         if (!getline(cin, line)) {
