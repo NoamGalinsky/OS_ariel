@@ -30,10 +30,12 @@ static vector<Point> points;
 static void* g_reactor = nullptr;
 static volatile sig_atomic_t g_running = 1;
 
+// Cross product to determine orientation
 double cross(const Point& O, const Point& A, const Point& B) {
     return (A.x - O.x) * (B.y - O.y) - (A.y - O.y) * (B.x - O.x);
 }
 
+// Compute polygon area using Shoelace formula
 double polygonArea(const vector<Point>& hull) {
     double area = 0;
     int n = hull.size();
@@ -58,8 +60,7 @@ const char* inet_ntop2(void* addr, char* buf, size_t size) {
 
 int get_listener_socket() {
     int listener, yes = 1, rv;
-    struct addrinfo hints, *ai, *p;
-    memset(&hints, 0, sizeof hints);
+    struct addrinfo hints{}, *ai, *p;
     hints.ai_family = AF_INET;
     hints.ai_socktype = SOCK_STREAM;
     hints.ai_flags = AI_PASSIVE;
@@ -118,7 +119,7 @@ void* handleClient(int fd) {
             }
             points.push_back(p);
         }
-        cout << "The graph is build.\n";
+        cout << "The graph is built.\n";
     }
     else if (input == "CH") {
         sort(points.begin(), points.end(), [](const Point& a, const Point& b) {
@@ -168,7 +169,7 @@ void* handleClient(int fd) {
                 removed = true;
             }
         }
-        cout << (removed ? "The point is removed.\n" : "The point not exist.\n");
+        cout << (removed ? "The point is removed.\n" : "The point does not exist.\n");
     }
     else {
         cerr << "USAGE:\n"
