@@ -73,7 +73,8 @@ int stopProactor(pthread_t tid) {
     g_proactor = nullptr;
 
     p->running = false;
-    close(p->sockfd);   // שובר את ה-accept() בתוך proactorLoop
+    shutdown(p->sockfd, SHUT_RDWR);  // ensures accept() in the proactor thread is interrupted
+    close(p->sockfd);
     pthread_join(tid, nullptr);
     delete p;
     return 0;
