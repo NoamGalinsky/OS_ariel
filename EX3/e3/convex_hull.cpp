@@ -1,5 +1,4 @@
 #include <iostream>
-#include <fstream>
 #include <vector>
 #include <algorithm>
 #include <sstream>
@@ -55,7 +54,7 @@ int main() {
                 points.push_back(p);
             }
             getline(cin, input); // consume trailing newline
-            cout << "The graph is build.\n";
+            cout << "The graph is built.\n";
         }
         else if (input == "CH")
         {
@@ -125,7 +124,7 @@ int main() {
             if (removed)
                 cout << "The point is removed.\n";
             else
-                cout << "The point not exist.\n";
+                cout << "The point does not exist.\n";
         }
         else if (cin.eof())
         {
