@@ -1,9 +1,9 @@
 #define _POSIX_C_SOURCE 200112L
 
 
-#include <cstdio>
 #include <cstdlib>
 #include <cstring>
+#include <cerrno>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -93,7 +93,7 @@ int get_listener_socket(void)
     hints.ai_socktype = SOCK_STREAM;
     hints.ai_flags = AI_PASSIVE;
     if ((rv = getaddrinfo(NULL, PORT, &hints, &ai)) != 0) {
-        fprintf(stderr, "pollserver: %s\n", gai_strerror(rv));
+        cerr << "server: " << gai_strerror(rv) << '\n';
         exit(1);
     }
 
@@ -176,13 +176,13 @@ void handle_new_connection(int listener, int *fd_count,
             &addrlen);
 
     if (newfd == -1) {
-        perror("accept");
+        cerr << "accept: " << strerror(errno) << '\n';
     } else {
         add_to_pfds(pfds, newfd, fd_count, fd_size);
 
-        printf("pollserver: new connection from %s on socket %d\n",
-                inet_ntop2(&remoteaddr, remoteIP, sizeof remoteIP),
-                newfd);
+        cout << "server: new connection from "
+             << inet_ntop2(&remoteaddr, remoteIP, sizeof remoteIP)
+             << " on socket " << newfd << '\n';
     }
 }
 
@@ -201,9 +201,9 @@ void handle_client_data(int *fd_count,
     if (nbytes <= 0) { // Got error or connection closed by client
         if (nbytes == 0) {
             // Connection closed
-            printf("pollserver: socket %d hung up\n", sender_fd);
+            cout << "server: socket " << sender_fd << " hung up\n";
         } else {
-            perror("recv");
+            cerr << "recv: " << strerror(errno) << '\n';
         }
 
         close(pfds[*pfd_i].fd); // Bye!
@@ -214,10 +214,9 @@ void handle_client_data(int *fd_count,
         (*pfd_i)--;
 
     } else { // We got some good data from a client
-        printf("pollserver: recv from fd %d: %.*s\n", sender_fd,
-                nbytes, buf);
         buf[nbytes] = '\0';
         string input(buf, nbytes);
+        cout << "server: recv from fd " << sender_fd << ": " << input << '\n';
         if (input.rfind("Newgraph ", 0) == 0)
         {
             int amount = 0;
@@ -367,7 +366,7 @@ int main(void)
     listener = get_listener_socket();
 
     if (listener == -1) {
-        fprintf(stderr, "error getting listening socket\n");
+        cerr << "error getting listening socket\n";
         exit(1);
     }
 
@@ -378,14 +377,14 @@ int main(void)
 
     fd_count = 1; // For the listener
 
-    puts("pollserver: waiting for connections...");
+    cout << "server: waiting for connections...\n";
 
     // Main loop
     for(;;) {
         int poll_count = poll(pfds, fd_count, -1);
 
         if (poll_count == -1) {
-            perror("poll");
+            cerr << "poll: " << strerror(errno) << '\n';
             exit(1);
         }
 
