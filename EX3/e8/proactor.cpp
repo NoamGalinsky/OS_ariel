@@ -2,7 +2,9 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <unistd.h>
-#include <cstdio>
+#include <iostream>
+#include <cerrno>
+#include <cstring>
 
 struct Proactor {
     int sockfd;
@@ -35,14 +37,14 @@ static void* proactorLoop(void* arg) {
 
         int newfd = accept(p->sockfd, (struct sockaddr*)&remoteaddr, &addrlen);
         if (newfd < 0) {
-            if (p->running) perror("accept");
+            if (p->running) std::cerr << "accept: " << strerror(errno) << '\n';
             break;
         }
 
         auto* ca = new ClientArg{p->func, newfd};
         pthread_t tid;
         if (pthread_create(&tid, nullptr, clientWrapper, ca) != 0) {
-            perror("pthread_create");
+            std::cerr << "pthread_create: " << strerror(errno) << '\n';
             close(newfd);
             delete ca;
             continue;
@@ -58,7 +60,7 @@ pthread_t startProactor(int sockfd, proactorFunc threadFunc) {
 
     pthread_t tid;
     if (pthread_create(&tid, nullptr, proactorLoop, p) != 0) {
-        perror("pthread_create");
+        std::cerr << "pthread_create: " << strerror(errno) << '\n';
         delete p;
         return 0;
     }
