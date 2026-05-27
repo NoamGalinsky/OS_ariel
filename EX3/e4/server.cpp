@@ -1,6 +1,5 @@
 #define _POSIX_C_SOURCE 200112L
 
-
 #include <cstdlib>
 #include <cstring>
 #include <cerrno>
@@ -17,15 +16,14 @@
 #include <sstream>
 #include <cmath>
 
-
 #define PORT "9034"   // Port we're listening on
 
 using namespace std;
 
- 
 struct Point {
     double x, y;
 };
+
 static vector<Point> points;
 
 // Cross product to determine orientation
@@ -48,138 +46,74 @@ double polygonArea(const vector<Point>& hull) {
  * Convert socket to IP address string.
  * addr: struct sockaddr_in or struct sockaddr_in6
  */
-
-const char *inet_ntop2(void *addr, char *buf, size_t size)
-{
-    struct sockaddr_storage *sas = (struct sockaddr_storage*)addr;
-    struct sockaddr_in *sa4;
-    struct sockaddr_in6 *sa6;
-    void *src;
-
+const char* inet_ntop2(void* addr, char* buf, size_t size) {
+    struct sockaddr_storage* sas = (struct sockaddr_storage*)addr;
+    void* src;
     switch (sas->ss_family) {
-        case AF_INET:
-            sa4 = (struct sockaddr_in*)addr;
-            src = &(sa4->sin_addr);
-            break;
-
-        case AF_INET6:
-            sa6 = (struct sockaddr_in6*)addr;
-            src = &(sa6->sin6_addr);
-            break;
-
-        default:
-            return NULL;
+        case AF_INET:  src = &((struct sockaddr_in*)addr)->sin_addr;  break;
+        case AF_INET6: src = &((struct sockaddr_in6*)addr)->sin6_addr; break;
+        default: return nullptr;
     }
-
     return inet_ntop(sas->ss_family, src, buf, size);
 }
-
-
 
 /*
  * Return a listening socket.
  */
-int get_listener_socket(void)
-{
-    int listener;     // Listening socket descriptor
-    int yes=1;        // For setsockopt() SO_REUSEADDR, below
-    int rv;
-
-    struct addrinfo hints, *ai, *p;
-
-    // Get us a socket and bind it
-    memset(&hints, 0, sizeof hints);
+int get_listener_socket() {
+    int listener, yes = 1, rv;
+    struct addrinfo hints{}, *ai, *p;
     hints.ai_family = AF_INET;
     hints.ai_socktype = SOCK_STREAM;
     hints.ai_flags = AI_PASSIVE;
-    if ((rv = getaddrinfo(NULL, PORT, &hints, &ai)) != 0) {
+    if ((rv = getaddrinfo(nullptr, PORT, &hints, &ai)) != 0) {
         cerr << "server: " << gai_strerror(rv) << '\n';
         exit(1);
     }
-
-    for(p = ai; p != NULL; p = p->ai_next) {
-        listener = socket(p->ai_family, p->ai_socktype,
-                p->ai_protocol);
-        if (listener < 0) {
-            continue;
-        }
-
-        // Lose the pesky "address already in use" error message
-        setsockopt(listener, SOL_SOCKET, SO_REUSEADDR, &yes,
-                sizeof(int));
-
+    for (p = ai; p != nullptr; p = p->ai_next) {
+        listener = socket(p->ai_family, p->ai_socktype, p->ai_protocol);
+        if (listener < 0) continue;
+        setsockopt(listener, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(int));
         if (bind(listener, p->ai_addr, p->ai_addrlen) < 0) {
             close(listener);
             continue;
         }
-
         break;
     }
-
-    // If we got here, it means we didn't get bound
-    if (p == NULL) {
-        return -1;
-    }
-
-    freeaddrinfo(ai); // All done with this
-
-    // Listen
-    if (listen(listener, 10) == -1) {
-        return -1;
-    }
-
+    if (p == nullptr) return -1;
+    freeaddrinfo(ai);
+    if (listen(listener, 10) == -1) return -1;
     return listener;
 }
 
 /*
  * Add a new file descriptor to the set.
  */
-void add_to_pfds(struct pollfd **pfds, int newfd, int *fd_count,
-        int *fd_size)
-{
-    // If we don't have room, add more space in the pfds array
-    if (*fd_count == *fd_size) {
-        *fd_size *= 2; // Double it
-    *pfds = (pollfd*) realloc(*pfds, sizeof(**pfds) * (*fd_size));    }
-
-    (*pfds)[*fd_count].fd = newfd;
-    (*pfds)[*fd_count].events = POLLIN; // Check ready-to-read
-    (*pfds)[*fd_count].revents = 0;
-
-    (*fd_count)++;
+void add_to_pfds(vector<pollfd>& pfds, int newfd) {
+    pfds.push_back({newfd, POLLIN, 0});
 }
 
 /*
  * Remove a file descriptor at a given index from the set.
  */
-void del_from_pfds(struct pollfd pfds[], int i, int *fd_count)
-{
-    // Copy the one from the end over this one
-    pfds[i] = pfds[*fd_count-1];
-
-    (*fd_count)--;
+void del_from_pfds(vector<pollfd>& pfds, int i) {
+    pfds[i] = pfds.back();
+    pfds.pop_back();
 }
 
 /*
  * Handle incoming connections.
  */
-void handle_new_connection(int listener, int *fd_count,
-        int *fd_size, struct pollfd **pfds)
-{
-    struct sockaddr_storage remoteaddr; // Client address
-    socklen_t addrlen;
-    int newfd;  // Newly accept()ed socket descriptor
+void handle_new_connection(int listener, vector<pollfd>& pfds) {
+    struct sockaddr_storage remoteaddr;
+    socklen_t addrlen = sizeof remoteaddr;
     char remoteIP[INET6_ADDRSTRLEN];
 
-    addrlen = sizeof remoteaddr;
-    newfd = accept(listener, (struct sockaddr *)&remoteaddr,
-            &addrlen);
-
+    int newfd = accept(listener, (struct sockaddr*)&remoteaddr, &addrlen);
     if (newfd == -1) {
         cerr << "accept: " << strerror(errno) << '\n';
     } else {
-        add_to_pfds(pfds, newfd, fd_count, fd_size);
-
+        add_to_pfds(pfds, newfd);
         cout << "server: new connection from "
              << inet_ntop2(&remoteaddr, remoteIP, sizeof remoteIP)
              << " on socket " << newfd << '\n';
@@ -189,43 +123,30 @@ void handle_new_connection(int listener, int *fd_count,
 /*
  * Handle regular client data or client hangups.
  */
-void handle_client_data(int *fd_count,
-        struct pollfd *pfds, int *pfd_i)
-{
-    char buf[256];    // Buffer for client data
+void handle_client_data(vector<pollfd>& pfds, int& pfd_i) {
+    char buf[256];
+    int sender_fd = pfds[pfd_i].fd;
+    int nbytes = recv(sender_fd, buf, sizeof buf, 0);
 
-    int nbytes = recv(pfds[*pfd_i].fd, buf, sizeof buf, 0);
-
-    int sender_fd = pfds[*pfd_i].fd;
-
-    if (nbytes <= 0) { // Got error or connection closed by client
-        if (nbytes == 0) {
-            // Connection closed
+    if (nbytes <= 0) {
+        if (nbytes == 0)
             cout << "server: socket " << sender_fd << " hung up\n";
-        } else {
+        else
             cerr << "recv: " << strerror(errno) << '\n';
-        }
-
-        close(pfds[*pfd_i].fd); // Bye!
-
-        del_from_pfds(pfds, *pfd_i, fd_count);
-
-        // reexamine the slot we just deleted
-        (*pfd_i)--;
-
-    } else { // We got some good data from a client
+        close(sender_fd);
+        del_from_pfds(pfds, pfd_i);
+        pfd_i--; // reexamine the slot we just deleted
+    } else {
         buf[nbytes] = '\0';
         string input(buf, nbytes);
         cout << "server: recv from fd " << sender_fd << ": " << input << '\n';
-        if (input.rfind("Newgraph ", 0) == 0)
-        {
-            int amount = 0;
-            amount = stoi(input.substr(9));
+
+        if (input.rfind("Newgraph ", 0) == 0) {
+            int amount = stoi(input.substr(9));
             points.clear();
             points.reserve(amount);
-            for (int i = 0; i < amount; i++)
-            {
-                nbytes = recv(pfds[*pfd_i].fd, buf, sizeof buf, 0);
+            for (int i = 0; i < amount; i++) {
+                nbytes = recv(sender_fd, buf, sizeof buf, 0);
                 if (nbytes <= 0) continue;
                 buf[nbytes] = '\0';
                 input = string(buf, nbytes);
@@ -239,44 +160,29 @@ void handle_client_data(int *fd_count,
                 points.push_back(p);
             }
             cout << "The graph is built.\n";
-
         }
-        else if (input == "CH")
-        {
-            // Sort points lexicographically
+        else if (input == "CH") {
             sort(points.begin(), points.end(), [](const Point& a, const Point& b) {
                 return (a.x < b.x) || (a.x == b.x && a.y < b.y);
             });
-
-            // Build convex hull using monotonic chain
             vector<Point> hull;
-
-            // Lower hull
             for (const auto& p : points) {
                 while (hull.size() >= 2 && cross(hull[hull.size()-2], hull.back(), p) <= 0)
                     hull.pop_back();
                 hull.push_back(p);
             }
-
-            // Upper hull
             size_t lowerSize = hull.size();
-            for (int i = points.size() - 1; i >= 0; i--) {
+            for (int i = (int)points.size() - 1; i >= 0; i--) {
                 const auto& p = points[i];
                 while (hull.size() > lowerSize &&
                     cross(hull[hull.size()-2], hull.back(), p) <= 0)
                     hull.pop_back();
                 hull.push_back(p);
             }
-
             hull.pop_back(); // last point is duplicate
-
-            // Compute area
-            double area = polygonArea(hull);
-
-            cout << "Convex Hull Area: " << area << endl;
+            cout << "Convex Hull Area: " << polygonArea(hull) << endl;
         }
-        else if (input.rfind("Newpoint ", 0) == 0)
-        {
+        else if (input.rfind("Newpoint ", 0) == 0) {
             input = input.substr(9);
             replace(input.begin(), input.end(), ',', ' ');
             stringstream ss(input);
@@ -288,8 +194,7 @@ void handle_client_data(int *fd_count,
             points.push_back(p);
             cout << "The point is added.\n";
         }
-        else if (input.rfind("Removepoint ", 0) == 0)
-        {
+        else if (input.rfind("Removepoint ", 0) == 0) {
             bool removed = false;
             input = input.substr(12);
             replace(input.begin(), input.end(), ',', ' ');
@@ -299,21 +204,15 @@ void handle_client_data(int *fd_count,
                 cerr << "Error: Invalid point format. Try again with: <x>,<y>\n";
                 return;
             }
-            for (size_t i = 0; i < points.size(); i++)
-            {
-                if (points[i].x == p.x && points[i].y == p.y){
+            for (size_t i = 0; i < points.size(); i++) {
+                if (points[i].x == p.x && points[i].y == p.y) {
                     points.erase(points.begin() + i);
                     removed = true;
                 }
             }
-            if (removed)
-                cout << "The point is removed.\n";
-            else
-                cout << "The point does not exist.\n";
-
+            cout << (removed ? "The point is removed.\n" : "The point does not exist.\n");
         }
-        else
-        {
+        else {
             cerr << "USAGE:\n"
                  << "  Newgraph <n>        - create new graph, then enter n lines of: <x>,<y>\n"
                  << "  CH                  - compute convex hull area\n"
@@ -327,23 +226,13 @@ void handle_client_data(int *fd_count,
 /*
  * Process all existing connections.
  */
-void process_connections(int listener, int *fd_count, int *fd_size,
-        struct pollfd **pfds)
-{
-    for(int i = 0; i < *fd_count; i++) {
-
-        // Check if someone's ready to read
-        if ((*pfds)[i].revents & (POLLIN | POLLHUP)) {
-            // We got one!!
-
-            if ((*pfds)[i].fd == listener) {
-                // If we're the listener, it's a new connection
-                handle_new_connection(listener, fd_count, fd_size,
-                        pfds);
-            } else {
-                // Otherwise we're just a regular client
-                handle_client_data(fd_count, *pfds, &i);
-            }
+void process_connections(int listener, vector<pollfd>& pfds) {
+    for (int i = 0; i < (int)pfds.size(); i++) {
+        if (pfds[i].revents & (POLLIN | POLLHUP)) {
+            if (pfds[i].fd == listener)
+                handle_new_connection(listener, pfds);
+            else
+                handle_client_data(pfds, i);
         }
     }
 }
@@ -352,45 +241,24 @@ void process_connections(int listener, int *fd_count, int *fd_size,
  * Main: create a listener and connection set, loop forever
  * processing connections.
  */
-int main(void)
-{
-
-    int listener;     // Listening socket descriptor
-
-    // Start off with room for 5 connections
-    // (We'll realloc as necessary)
-    int fd_size = 5;
-    int fd_count = 0;
-    struct pollfd *pfds = (pollfd*) malloc(sizeof(*pfds) * fd_size);
-    // Set up and get a listening socket
-    listener = get_listener_socket();
-
+int main() {
+    int listener = get_listener_socket();
     if (listener == -1) {
         cerr << "error getting listening socket\n";
         exit(1);
     }
 
-    // Add the listener to set;
-    // Report ready to read on incoming connection
-    pfds[0].fd = listener;
-    pfds[0].events = POLLIN;
-
-    fd_count = 1; // For the listener
+    vector<pollfd> pfds;
+    pfds.push_back({listener, POLLIN, 0});
 
     cout << "server: waiting for connections...\n";
 
-    // Main loop
-    for(;;) {
-        int poll_count = poll(pfds, fd_count, -1);
-
+    for (;;) {
+        int poll_count = poll(pfds.data(), pfds.size(), -1);
         if (poll_count == -1) {
             cerr << "poll: " << strerror(errno) << '\n';
             exit(1);
         }
-
-        // Run through connections looking for data to read
-        process_connections(listener, &fd_count, &fd_size, &pfds);
+        process_connections(listener, pfds);
     }
-
-    free(pfds);
 }
