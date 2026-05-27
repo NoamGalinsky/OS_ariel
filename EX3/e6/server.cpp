@@ -1,8 +1,8 @@
 #define _POSIX_C_SOURCE 200112L
 
-#include <cstdio>
 #include <cstdlib>
 #include <cstring>
+#include <cerrno>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -65,7 +65,7 @@ int get_listener_socket() {
     hints.ai_socktype = SOCK_STREAM;
     hints.ai_flags = AI_PASSIVE;
     if ((rv = getaddrinfo(NULL, PORT, &hints, &ai)) != 0) {
-        fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(rv));
+        cerr << "getaddrinfo: " << gai_strerror(rv) << '\n';
         exit(1);
     }
     for (p = ai; p != NULL; p = p->ai_next) {
@@ -90,9 +90,9 @@ void* handleClient(int fd) {
 
     if (nbytes <= 0) {
         if (nbytes == 0)
-            printf("server: socket %d hung up\n", fd);
+            cout << "server: socket " << fd << " hung up\n";
         else
-            perror("recv");
+            cerr << "recv: " << strerror(errno) << '\n';
         close(fd);
         removeFdFromReactor(g_reactor, fd);
         return nullptr;
@@ -189,11 +189,12 @@ void* handleNewConnection(int listener) {
 
     int newfd = accept(listener, (struct sockaddr*)&remoteaddr, &addrlen);
     if (newfd == -1) {
-        perror("accept");
+        cerr << "accept: " << strerror(errno) << '\n';
         return nullptr;
     }
-    printf("server: new connection from %s on socket %d\n",
-           inet_ntop2(&remoteaddr, remoteIP, sizeof remoteIP), newfd);
+    cout << "server: new connection from "
+         << inet_ntop2(&remoteaddr, remoteIP, sizeof remoteIP)
+         << " on socket " << newfd << '\n';
     addFdToReactor(g_reactor, newfd, handleClient);
     return nullptr;
 }
@@ -207,18 +208,18 @@ int main() {
 
     int listener = get_listener_socket();
     if (listener == -1) {
-        fprintf(stderr, "error getting listening socket\n");
+        cerr << "error getting listening socket\n";
         exit(1);
     }
 
     g_reactor = startReactor();
     if (!g_reactor) {
-        fprintf(stderr, "error starting reactor\n");
+        cerr << "error starting reactor\n";
         exit(1);
     }
 
     addFdToReactor(g_reactor, listener, handleNewConnection);
-    puts("server: waiting for connections...");
+    cout << "server: waiting for connections...\n";
 
     while (g_running) pause();
 
