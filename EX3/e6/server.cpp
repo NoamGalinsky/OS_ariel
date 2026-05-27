@@ -64,11 +64,11 @@ int get_listener_socket() {
     hints.ai_family = AF_INET;
     hints.ai_socktype = SOCK_STREAM;
     hints.ai_flags = AI_PASSIVE;
-    if ((rv = getaddrinfo(NULL, PORT, &hints, &ai)) != 0) {
+    if ((rv = getaddrinfo(nullptr, PORT, &hints, &ai)) != 0) {
         cerr << "getaddrinfo: " << gai_strerror(rv) << '\n';
         exit(1);
     }
-    for (p = ai; p != NULL; p = p->ai_next) {
+    for (p = ai; p != nullptr; p = p->ai_next) {
         listener = socket(p->ai_family, p->ai_socktype, p->ai_protocol);
         if (listener < 0) continue;
         setsockopt(listener, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(int));
@@ -78,7 +78,7 @@ int get_listener_socket() {
         }
         break;
     }
-    if (p == NULL) return -1;
+    if (p == nullptr) return -1;
     freeaddrinfo(ai);
     if (listen(listener, 10) == -1) return -1;
     return listener;
