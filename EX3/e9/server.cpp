@@ -1,8 +1,8 @@
 #define _POSIX_C_SOURCE 200112L
 
-#include <cstdio>
 #include <cstdlib>
 #include <cstring>
+#include <cerrno>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -66,7 +66,7 @@ int get_listener_socket() {
     hints.ai_socktype = SOCK_STREAM;
     hints.ai_flags = AI_PASSIVE;
     if ((rv = getaddrinfo(NULL, PORT, &hints, &ai)) != 0) {
-        fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(rv));
+        cerr << "getaddrinfo: " << gai_strerror(rv) << '\n';
         exit(1);
     }
     for (p = ai; p != nullptr; p = p->ai_next) {
@@ -104,9 +104,9 @@ void* handleClient(int fd) {
         int nbytes = recvLine(fd, buf, sizeof buf);
         if (nbytes <= 0) {
             if (nbytes == 0)
-                printf("server: socket %d hung up\n", fd);
+                cout << "server: socket " << fd << " hung up\n";
             else
-                perror("recv");
+                cerr << "recv: " << strerror(errno) << '\n';
             break;
         }
 
@@ -218,16 +218,16 @@ int main() {
 
     int listener = get_listener_socket();
     if (listener == -1) {
-        fprintf(stderr, "error getting listening socket\n");
+        cerr << "error getting listening socket\n";
         exit(1);
     }
 
-    puts("server: waiting for connections...");
+    cout << "server: waiting for connections...\n";
 
     // proactor listens on the listener socket and spawns a new thread per client
     pthread_t proactor = startProactor(listener, handleClient);
     if (proactor == 0) {
-        fprintf(stderr, "error starting proactor\n");
+        cerr << "error starting proactor\n";
         close(listener);
         exit(1);
     }
