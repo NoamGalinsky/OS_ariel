@@ -1,8 +1,8 @@
 #define _POSIX_C_SOURCE 200112L
 
-#include <cstdio>
 #include <cstdlib>
 #include <cstring>
+#include <cerrno>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -65,7 +65,7 @@ int get_listener_socket() {
     hints.ai_socktype = SOCK_STREAM;
     hints.ai_flags = AI_PASSIVE;
     if ((rv = getaddrinfo(NULL, PORT, &hints, &ai)) != 0) {
-        fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(rv));
+        cerr << "getaddrinfo: " << gai_strerror(rv) << '\n';
         exit(1);
     }
     for (p = ai; p != NULL; p = p->ai_next) {
@@ -106,9 +106,9 @@ void* handleClient(void* arg) {
         int nbytes = recvLine(fd, buf, sizeof buf);
         if (nbytes <= 0) {
             if (nbytes == 0)
-                printf("server: socket %d hung up\n", fd);
+                cout << "server: socket " << fd << " hung up\n";
             else
-                perror("recv");
+                cerr << "recv: " << strerror(errno) << '\n';
             break;
         }
 
@@ -223,11 +223,11 @@ int main() {
 
     g_listener = get_listener_socket();
     if (g_listener == -1) {
-        fprintf(stderr, "error getting listening socket\n");
+        cerr << "error getting listening socket\n";
         exit(1);
     }
 
-    puts("server: waiting for connections...");
+    cout << "server: waiting for connections...\n";
 
     while (g_running) {
         struct sockaddr_storage remoteaddr;
@@ -236,19 +236,20 @@ int main() {
 
         int newfd = accept(g_listener, (struct sockaddr*)&remoteaddr, &addrlen);
         if (newfd == -1) {
-            if (g_running) perror("accept");
+            if (g_running) cerr << "accept: " << strerror(errno) << '\n';
             break;
         }
 
-        printf("server: new connection from %s on socket %d\n",
-               inet_ntop2(&remoteaddr, remoteIP, sizeof remoteIP), newfd);
+        cout << "server: new connection from "
+             << inet_ntop2(&remoteaddr, remoteIP, sizeof remoteIP)
+             << " on socket " << newfd << '\n';
 
         int* fdPtr = (int*)malloc(sizeof(int));
         *fdPtr = newfd;
 
         pthread_t tid;
         if (pthread_create(&tid, nullptr, handleClient, fdPtr) != 0) {
-            perror("pthread_create");
+            cerr << "pthread_create: " << strerror(errno) << '\n';
             close(newfd);
             free(fdPtr);
             continue;
