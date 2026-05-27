@@ -65,7 +65,7 @@ int get_listener_socket() {
     hints.ai_family = AF_INET;
     hints.ai_socktype = SOCK_STREAM;
     hints.ai_flags = AI_PASSIVE;
-    if ((rv = getaddrinfo(NULL, PORT, &hints, &ai)) != 0) {
+    if ((rv = getaddrinfo(nullptr, PORT, &hints, &ai)) != 0) {
         cerr << "getaddrinfo: " << gai_strerror(rv) << '\n';
         exit(1);
     }
