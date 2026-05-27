@@ -19,8 +19,8 @@ int main()
     int sockfd;
     struct addrinfo hints{}, *res, *p;
 
-    hints.ai_family = AF_INET;
-    hints.ai_socktype = SOCK_STREAM;
+    hints.ai_family = AF_INET;       // IPv4
+    hints.ai_socktype = SOCK_STREAM; // TCP
 
     int rv;
     if ((rv = getaddrinfo(server_ip, port, &hints, &res)) != 0) {
@@ -28,6 +28,7 @@ int main()
         exit(1);
     }
 
+    // Connect to first possible result
     for (p = res; p != nullptr; p = p->ai_next) {
         sockfd = socket(p->ai_family, p->ai_socktype, p->ai_protocol);
         if (sockfd == -1) continue;
@@ -35,7 +36,7 @@ int main()
             close(sockfd);
             continue;
         }
-        break;
+        break; // Success
     }
 
     if (p == nullptr) {

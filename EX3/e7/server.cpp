@@ -30,10 +30,12 @@ static pthread_mutex_t g_mutex = PTHREAD_MUTEX_INITIALIZER;
 static volatile sig_atomic_t g_running = 1;
 static int g_listener = -1;
 
+// Cross product to determine orientation
 double cross(const Point& O, const Point& A, const Point& B) {
     return (A.x - O.x) * (B.y - O.y) - (A.y - O.y) * (B.x - O.x);
 }
 
+// Compute polygon area using Shoelace formula
 double polygonArea(const vector<Point>& hull) {
     double area = 0;
     int n = hull.size();
@@ -132,7 +134,7 @@ void* handleClient(void* arg) {
             pthread_mutex_lock(&g_mutex);
             points = move(newPoints);
             pthread_mutex_unlock(&g_mutex);
-            cout << "The graph is build.\n";
+            cout << "The graph is built.\n";
 
         } else if (input == "CH") {
             // Copy points under lock so another thread can't modify mid-sort
@@ -194,7 +196,7 @@ void* handleClient(void* arg) {
                 }
             }
             pthread_mutex_unlock(&g_mutex);
-            cout << (removed ? "The point is removed.\n" : "The point not exist.\n");
+            cout << (removed ? "The point is removed.\n" : "The point does not exist.\n");
 
         } else {
             cerr << "USAGE:\n"
