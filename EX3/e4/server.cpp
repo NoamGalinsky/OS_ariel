@@ -1,6 +1,3 @@
-/*
-** pollserver.c -- a cheezy multiperson chat server
-*/
 #define _POSIX_C_SOURCE 200112L
 
 
@@ -15,7 +12,6 @@
 #include <netdb.h>
 #include <poll.h>
 #include <iostream>
-#include <fstream>
 #include <vector>
 #include <algorithm>
 #include <sstream>
@@ -31,6 +27,7 @@ struct Point {
     double x, y;
 };
 static vector<Point> points;
+
 // Cross product to determine orientation
 double cross(const Point& O, const Point& A, const Point& B) {
     return (A.x - O.x) * (B.y - O.y) - (A.y - O.y) * (B.x - O.x);
@@ -242,7 +239,7 @@ void handle_client_data(int *fd_count,
                 }
                 points.push_back(p);
             }
-            cout << "The graph is build.\n";
+            cout << "The graph is built.\n";
 
         }
         else if (input == "CH")
@@ -313,7 +310,7 @@ void handle_client_data(int *fd_count,
             if (removed)
                 cout << "The point is removed.\n";
             else
-                cout << "The point not exist.\n";
+                cout << "The point does not exist.\n";
 
         }
         else

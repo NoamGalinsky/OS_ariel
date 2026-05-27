@@ -55,8 +55,6 @@ int main()
     std::cout << "Type messages and press Enter to send.\n";
 
     std::string input;
-    std::string input2;
-
     while (std::getline(std::cin, input)) {
         send(sockfd, input.c_str(), input.size(), 0);
     }
