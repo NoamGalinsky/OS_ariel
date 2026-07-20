@@ -1,5 +1,6 @@
+
 CXX = g++
-CXXFLAGS = -Wall -g
+CXXFLAGS = -Wall -Wextra -g
 
 all: add2PB findPhone
 
