@@ -1,5 +1,6 @@
 
 #include <iostream>
+#include <string>
 #include <unistd.h>
 #include <sys/wait.h>
 
@@ -7,11 +8,21 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-    if (argc != 2)
+    if (argc < 2)
     {
         cerr << "Usage: " << argv[0]
-             << " \"name\"" << endl;
+             << " <name or partial name>" << endl;
         return 1;
+    }
+
+    string searchName;
+
+    for (int i = 1; i < argc; i++)
+    {
+        searchName += argv[i];
+
+        if (i != argc - 1)
+            searchName += " ";
     }
 
     int pipefd[2];
@@ -22,50 +33,40 @@ int main(int argc, char* argv[])
         return 1;
     }
 
-    pid_t pid1 = fork();
+    pid_t grep_pid = fork();
 
-    if (pid1 == -1)
-    {
-        perror("fork");
-        return 1;
-    }
-
-    if (pid1 == 0)
+    if (grep_pid == 0)
     {
         dup2(pipefd[1], STDOUT_FILENO);
 
         close(pipefd[0]);
         close(pipefd[1]);
 
-        char* grepArgs[] = {
+        char* grepArgs[] =
+        {
             (char*)"grep",
-            argv[1],
+            (char*)searchName.c_str(),
             (char*)"phonebook.txt",
             nullptr
         };
 
         execvp("grep", grepArgs);
 
-        perror("execvp grep");
+        perror("grep");
         _exit(1);
     }
 
-    pid_t pid2 = fork();
+    pid_t cut_pid = fork();
 
-    if (pid2 == -1)
-    {
-        perror("fork");
-        return 1;
-    }
-
-    if (pid2 == 0)
+    if (cut_pid == 0)
     {
         dup2(pipefd[0], STDIN_FILENO);
 
         close(pipefd[0]);
         close(pipefd[1]);
 
-        char* cutArgs[] = {
+        char* cutArgs[] =
+        {
             (char*)"cut",
             (char*)"-d",
             (char*)",",
@@ -75,15 +76,15 @@ int main(int argc, char* argv[])
 
         execvp("cut", cutArgs);
 
-        perror("execvp cut");
+        perror("cut");
         _exit(1);
     }
 
     close(pipefd[0]);
     close(pipefd[1]);
 
-    waitpid(pid1, nullptr, 0);
-    waitpid(pid2, nullptr, 0);
+    waitpid(grep_pid, nullptr, 0);
+    waitpid(cut_pid, nullptr, 0);
 
     return 0;
 }
