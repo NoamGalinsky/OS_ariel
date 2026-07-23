@@ -1,13 +1,10 @@
 # Operating Systems Assignment 2 - Code Coverage Report
  
-**Note:**
-Code coverage analysis was performed only on **Stage 6 (`drinks_bar`)**, since the final implementation includes and integrates all functionality developed in Stages 1 through 5. Therefore, testing and coverage measurements of Stage 6 inherently cover the features and logic of all previous stages, including atom storage, molecule delivery, keyboard commands, socket communication (TCP, UDP, UDS Stream, and UDS Datagram), command parsing, and persistent inventory management.
-
 ## Overview
  
 This report presents the code coverage results for the final implementation of the project (Stage 6). Since Stage 6 integrates all functionality from the previous stages, the coverage analysis was performed only on the final version of the system.
  
-Coverage measurement was performed using GCC's built-in coverage support (`--coverage`) and the `gcov` tool. The project was compiled with coverage instrumentation enabled, executed using multiple test scenarios, and then analyzed using `gcov`. 【1-d5fe7f】【2-6c73d6】【3-e18a2b】
+Coverage measurement was performed using GCC's built-in coverage support (`--coverage`) and the `gcov` tool. The project was compiled with coverage instrumentation enabled, executed using multiple test scenarios, and then analyzed using `gcov`.
  
 ---
  
