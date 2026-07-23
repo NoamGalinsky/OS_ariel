@@ -1,17 +1,27 @@
 CXX = g++
-CXXFLAGS = -Wall -Wextra -O2
-TARGETS = molecule_requester drinks_bar atom_supplier
+CXXFLAGS = -Wall -Wextra -g -O0 --coverage
+LDFLAGS = --coverage
+
+TARGETS = drinks_bar atom_supplier molecule_requester
 
 all: $(TARGETS)
 
-molecule_requester: molecule_requester.cpp
-	$(CXX) $(CXXFLAGS) -o molecule_requester molecule_requester.cpp
-
 drinks_bar: drinks_bar.cpp
-	$(CXX) $(CXXFLAGS) -o drinks_bar drinks_bar.cpp
+	$(CXX) $(CXXFLAGS) -o $@ $< $(LDFLAGS)
 
 atom_supplier: atom_supplier.cpp
-	$(CXX) $(CXXFLAGS) -o atom_supplier atom_supplier.cpp
+	$(CXX) $(CXXFLAGS) -o $@ $< $(LDFLAGS)
+
+molecule_requester: molecule_requester.cpp
+	$(CXX) $(CXXFLAGS) -o $@ $< $(LDFLAGS)
+
+coverage:
+	gcov drinks_bar.cpp
+	gcov atom_supplier.cpp
+	gcov molecule_requester.cpp
 
 clean:
 	rm -f $(TARGETS)
+	rm -f *.gcda *.gcno *.gcov
+	rm -f inventory.txt
+	rm -f /tmp/*.sock

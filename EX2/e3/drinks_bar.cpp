@@ -28,33 +28,37 @@ void TCP_handle_command(const string& cmd)
     bool valid = true;
     bool limit = true;
     string type;
-
-    if (cmd.rfind("ADD CARBON ", 0) == 0) {
-        type = "CARBON";
-        num = cmd.substr(11);
-        amount = stoi(num, &pos);
-        if (pos != num.size()) valid = false;
-        else if (carbon + amount > MAX_ATOMS) limit = false;
-        else carbon += amount;
+    try{
+        if (cmd.rfind("ADD CARBON ", 0) == 0) {
+            type = "CARBON";
+            num = cmd.substr(11);
+            amount = stoi(num, &pos);
+            if (pos != num.size()) valid = false;
+            else if (carbon + amount > MAX_ATOMS) limit = false;
+            else carbon += amount;
+        }
+        else if (cmd.rfind("ADD OXYGEN ", 0) == 0) {
+            type = "OXYGEN";
+            num = cmd.substr(11);
+            amount = stoi(num, &pos);
+            if (pos != num.size()) valid = false;
+            else if (oxygen + amount > MAX_ATOMS) limit = false;
+            else oxygen += amount;
+        }
+        else if (cmd.rfind("ADD HYDROGEN ", 0) == 0) {
+            type = "HYDROGEN";
+            num = cmd.substr(13);
+            amount = stoi(num, &pos);
+            if (pos != num.size()) valid = false;
+            else if (hydrogen + amount > MAX_ATOMS) limit = false;
+            else hydrogen += amount;
+        }
+        else valid = false;
     }
-    else if (cmd.rfind("ADD OXYGEN ", 0) == 0) {
-        type = "OXYGEN";
-        num = cmd.substr(11);
-        amount = stoi(num, &pos);
-        if (pos != num.size()) valid = false;
-        else if (oxygen + amount > MAX_ATOMS) limit = false;
-        else oxygen += amount;
+    catch (const exception&)
+    {
+        valid = false;
     }
-    else if (cmd.rfind("ADD HYDROGEN ", 0) == 0) {
-        type = "HYDROGEN";
-        num = cmd.substr(13);
-        amount = stoi(num, &pos);
-        if (pos != num.size()) valid = false;
-        else if (hydrogen + amount > MAX_ATOMS) limit = false;
-        else hydrogen += amount;
-    }
-    else valid = false;
-
     if (!valid) {
         cout << "Error: Invalid command\n";
         return;

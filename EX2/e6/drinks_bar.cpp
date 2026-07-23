@@ -42,12 +42,10 @@ bool update_values_in_file(const char* path)
             carbon, oxygen, hydrogen);
 
     fflush(f);
-    fsync(fd);   // מבטיח שהמידע באמת נכתב לדיסק
-
+    fsync(fd);   
     flock(fd, LOCK_UN);
     fclose(f);
 
-    // החלפה אטומית של הקובץ
     rename(tmp_path, path);
 
     return true;
@@ -93,47 +91,70 @@ void TCP_handle_command(const string& cmd)
         cerr << "Failed to load resource file\n";
         exit(1);
     }
-    if (cmd.rfind("ADD CARBON ", 0) == 0) {
-        type = "CARBON";
-        num = cmd.substr(11);
-        amount = stoi(num, &pos);
-        if (pos != num.size()) valid = false;
-        else if (carbon + amount > MAX_ATOMS) limit = false;
-        else carbon += amount;
-    }
-    else if (cmd.rfind("ADD OXYGEN ", 0) == 0) {
-        type = "OXYGEN";
-        num = cmd.substr(11);
-        amount = stoi(num, &pos);
-        if (pos != num.size()) valid = false;
-        else if (oxygen + amount > MAX_ATOMS) limit = false;
-        else oxygen += amount;
-    }
-    else if (cmd.rfind("ADD HYDROGEN ", 0) == 0) {
-        type = "HYDROGEN";
-        num = cmd.substr(13);
-        amount = stoi(num, &pos);
-        if (pos != num.size()) valid = false;
-        else if (hydrogen + amount > MAX_ATOMS) limit = false;
-        else hydrogen += amount;
-    }
-    else valid = false;
 
-    if (!valid) {
+    try{
+        if (cmd.rfind("ADD CARBON ", 0) == 0)
+        {
+            type = "CARBON";
+            num = cmd.substr(11);
+            amount = stoi(num, &pos);
+            if (pos != num.size())
+                valid = false;
+            else if (carbon + amount > MAX_ATOMS)
+                limit = false;
+            else 
+                carbon += amount;
+        }
+        else if (cmd.rfind("ADD OXYGEN ", 0) == 0)
+        {
+            type = "OXYGEN";
+            num = cmd.substr(11);
+            amount = stoi(num, &pos);
+            if (pos != num.size())
+                valid = false;
+            else if (oxygen + amount > MAX_ATOMS)
+                limit = false;
+            else
+                oxygen += amount;
+        }
+        else if (cmd.rfind("ADD HYDROGEN ", 0) == 0)
+        {
+            type = "HYDROGEN";
+            num = cmd.substr(13);
+            amount = stoi(num, &pos);
+            if (pos != num.size())
+                valid = false;
+            else if (hydrogen + amount > MAX_ATOMS)
+                limit = false;
+            else
+                hydrogen += amount;
+        }
+        else{
+            valid = false;
+        }
+    }
+    catch (const exception&)
+        {
+        valid = false;
+    }
+    
+    if (!valid)
+    {
         cout << "Error: Invalid command\n";
         return;
     }
-    if (!limit) {
-        cout << "ERROR: Amount of " << type << " above the allowed limit\n";
+    if (!limit)
+    {
+        cout << "ERROR: Amount of " << type
+        << " above the allowed limit\n";
         return;
     }
-
     cout << "CARBON = " << carbon
-         << ", OXYGEN = " << oxygen
-         << ", HYDROGEN = " << hydrogen << endl;
-         
-    if (use_resource) update_values_in_file(resource_file);
-
+    << ", OXYGEN = " << oxygen
+    << ", HYDROGEN = " << hydrogen
+    << endl;
+    if (use_resource)
+        update_values_in_file(resource_file);
 }
 // =====================================================
 //                 REMOVE ATOMS FOR MOLECULES
