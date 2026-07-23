@@ -53,6 +53,10 @@ void TCP_handle_command(const string& cmd)
         else if (hydrogen + amount > MAX_ATOMS) limit = false;
         else hydrogen += amount;
     }
+    else if (cmd.rfind("EXIT", 0) == 0) {
+        exit(0);
+    }
+
     else valid = false;
 
     if (!valid) {
