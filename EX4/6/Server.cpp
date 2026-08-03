@@ -87,6 +87,10 @@ void Server::run()
 string Server::handleCommand(char* command)
 {
     char* commandName = strtok(command, " ");
+    if (commandName == NULL)
+    {
+        return "";
+    }
     if (strcmp(commandName, "add") == 0)
     {
         return add();

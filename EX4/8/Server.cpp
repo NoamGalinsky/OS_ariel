@@ -207,6 +207,7 @@ string Server::random()
     return "Generated a random graph";
 }
 
+// parameter for the thread that runs one algorithm
 typedef struct {
     GraphAlgorithm* algo; // Parameter 1
     Graph* graph;   // Parameter 2
@@ -220,6 +221,7 @@ string Server::activate()
     GraphAlgorithmFactory* factory = GraphAlgorithmFactory::getGraphAlgorithmFactory();
     ActivateAlgoArgs args[GRAPH_ALGO_NUM];
     int i = 0;
+    // create the threads
     for (string algName : algNames)
     {
         GraphAlgorithm* algo = factory->getGraphAlgorithm(algName);
@@ -231,6 +233,7 @@ string Server::activate()
         }
         i++;
     }
+    // wait for the threads to finish
     for (thread* thread : threads)
     {
         thread->join();
@@ -239,6 +242,7 @@ string Server::activate()
     {
         delete thread;
     }
+    // collect the answers to one long answer to be sent to the client
     string str;
     for (ActivateAlgoArgs arg : args)
     {

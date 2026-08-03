@@ -108,6 +108,7 @@ string Server::handleCommand(char* command)
     {
         return "";
     }
+    // see if the command is a name of an algorithm
     GraphAlgorithmFactory* factory = GraphAlgorithmFactory::getGraphAlgorithmFactory();
     GraphAlgorithm* alg = factory->getGraphAlgorithm(commandName);
     if (alg != nullptr)

@@ -27,7 +27,6 @@ Server::Server() : graph(0)
 {
     string algNames[] = {"hamilton", "max", "mst", "num"};
     GraphAlgorithmFactory* factory = GraphAlgorithmFactory::getGraphAlgorithmFactory();
-    ///ActivateAlgoArgs args[GRAPH_ALGO_NUM];
     activeObject = nullptr;
     ActiveObject* currentActiveObject = nullptr;
     int i = 0;

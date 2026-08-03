@@ -13,7 +13,9 @@
 #include <iostream>
 
 using namespace std;
+// the port
 #define PORT 3490
+// the size of the buffer
 #define BUF_SIZE 200
 
 Client::Client()
