@@ -6,13 +6,13 @@ using namespace std;
 
 class GraphAlgorithm;
 class Graph;
-class Server;
+class ClientHandler;
 
 // the parameter for active object
 struct ActiveObjectArgs
 {
     Graph* graph;   // Parameter 1
-    Server* server;   // Parameter 2
+    ClientHandler* clientHandler;   // Parameter 2
     string ret;     // return value
 };
 

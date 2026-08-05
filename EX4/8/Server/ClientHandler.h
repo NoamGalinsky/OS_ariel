@@ -1,17 +1,31 @@
 #pragma once
 
-#include <string>
 #include "Graph.h"
+#include <string>
 
 using namespace std;
 
-// class for the server
-class Server
+// the data of a specific client
+class ClientData
 {
 public:
-    Server();
-    void run();
+    ClientData(int sockfd);
+    int getSockFd() const;
 private:
+    int sockfd;
+};
+
+// handle a specific client
+class ClientHandler
+{
+public:
+    ClientHandler(ClientData* clientData);
+    ~ClientHandler();
+
+    static void* handleClient(void*);
+private:
+    void handle();
+    ClientData* clientData;
     // the graph that the server is working on
     Graph graph;
     // handle a command that the server receive from the client
