@@ -1,0 +1,20 @@
+==19933== Callgrind, a call-graph generating cache profiler
+==19933== Copyright (C) 2002-2017, and GNU GPL'd, by Josef Weidendorfer et al.
+==19933== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==19933== Command: ./a.out
+==19933== 
+==19933== For interactive control, run 'callgrind_control -h'.
+server: got connection from 127.0.0.1
+Graph with 4 vertices
+1. Edge from 3 to 1 with weight 5
+2. Edge from 3 to 3 with weight 7
+3. Edge from 1 to 3 with weight 5
+4. Edge from 1 to 1 with weight 7
+5. Edge from 2 to 0 with weight 19
+6. Edge from 1 to 0 with weight 18
+
+==19933== 
+==19933== Events    : Ir
+==19933== Collected : 3217634
+==19933== 
+==19933== I   refs:      3,217,634

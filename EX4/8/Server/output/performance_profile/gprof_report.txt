@@ -1,0 +1,516 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+ no time accumulated
+
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  Ts/call  Ts/call  name    
+  0.00      0.00     0.00      177     0.00     0.00  void std::vector<int, std::allocator<int> >::_M_realloc_insert<int const&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&)
+  0.00      0.00     0.00       56     0.00     0.00  __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > std::__remove_if<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__ops::_Iter_equals_val<int const> >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__ops::_Iter_equals_val<int const>)
+  0.00      0.00     0.00       36     0.00     0.00  void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*, std::forward_iterator_tag)
+  0.00      0.00     0.00       28     0.00     0.00  DSU::find(int)
+  0.00      0.00     0.00       25     0.00     0.00  Graph::getSize() const
+  0.00      0.00     0.00       23     0.00     0.00  void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag)
+  0.00      0.00     0.00       17     0.00     0.00  ClientHandler::handleCommand[abi:cxx11](char*)
+  0.00      0.00     0.00       17     0.00     0.00  std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > >::_M_lower_bound(std::_Rb_tree_node<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >*, std::_Rb_tree_node_base*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00      0.00     0.00       16     0.00     0.00  Graph::addEdge(int, int, int)
+  0.00      0.00     0.00       14     0.00     0.00  DSU::unite(int, int)
+  0.00      0.00     0.00       12     0.00     0.00  ClientHandler::activateAlgo(void*)
+  0.00      0.00     0.00       12     0.00     0.00  GraphAlgorithmFactory::getGraphAlgorithm(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00      0.00     0.00       12     0.00     0.00  Graph::getEdges() const
+  0.00      0.00     0.00       12     0.00     0.00  std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > >::find(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00      0.00     0.00       10     0.00     0.00  void std::__unguarded_linear_insert<__gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, __gnu_cxx::__ops::_Val_less_iter>(__gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, __gnu_cxx::__ops::_Val_less_iter)
+  0.00      0.00     0.00        9     0.00     0.00  GraphUtilities::fillAdjMatrix(std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >&, Graph const&)
+  0.00      0.00     0.00        6     0.00     0.00  GraphUtilities::bronKerbosch(std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, int&, bool, std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >&, Graph const&)
+  0.00      0.00     0.00        5     0.00     0.00  ClientHandler::add[abi:cxx11]()
+  0.00      0.00     0.00        5     0.00     0.00  ClientHandler::addw[abi:cxx11]()
+  0.00      0.00     0.00        5     0.00     0.00  GraphAlgorithm::GraphAlgorithm()
+  0.00      0.00     0.00        5     0.00     0.00  int& std::vector<int, std::allocator<int> >::emplace_back<int>(int&&)
+  0.00      0.00     0.00        5     0.00     0.00  std::_Rb_tree_iterator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > >::_M_emplace_hint_unique<std::piecewise_construct_t const&, std::tuple<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&>, std::tuple<> >(std::_Rb_tree_const_iterator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::piecewise_construct_t const&, std::tuple<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&>&&, std::tuple<>&&)
+  0.00      0.00     0.00        5     0.00     0.00  std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > >::_M_get_insert_hint_unique_pos(std::_Rb_tree_const_iterator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00      0.00     0.00        4     0.00     0.00  void std::vector<Edge, std::allocator<Edge> >::_M_realloc_insert<Edge>(__gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, Edge&&)
+  0.00      0.00     0.00        4     0.00     0.00  void std::vector<int, std::allocator<int> >::_M_realloc_insert<int>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int&&)
+  0.00      0.00     0.00        3     0.00     0.00  ClientHandler::activate[abi:cxx11]()
+  0.00      0.00     0.00        3     0.00     0.00  MSTWeightAlgorithm::findMstWeight(Graph const&)
+  0.00      0.00     0.00        3     0.00     0.00  MSTWeightAlgorithm::activate[abi:cxx11](Graph const&)
+  0.00      0.00     0.00        3     0.00     0.00  MaxCliqueAlgorithm::findMaxClique(Graph const&)
+  0.00      0.00     0.00        3     0.00     0.00  MaxCliqueAlgorithm::activate[abi:cxx11](Graph const&)
+  0.00      0.00     0.00        3     0.00     0.00  GraphAlgorithmFactory::getGraphAlgorithmFactory()
+  0.00      0.00     0.00        3     0.00     0.00  HamiltonCircuitAlgorithm::hamiltonianDFS(int, int, std::vector<int, std::allocator<int> >&, std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >&, Graph const&)
+  0.00      0.00     0.00        3     0.00     0.00  HamiltonCircuitAlgorithm::findHamiltonCircuit(Graph const&)
+  0.00      0.00     0.00        3     0.00     0.00  HamiltonCircuitAlgorithm::activate[abi:cxx11](Graph const&)
+  0.00      0.00     0.00        3     0.00     0.00  NumberOfCliquesAlgorithm::findNumberOfCliques(Graph const&)
+  0.00      0.00     0.00        3     0.00     0.00  NumberOfCliquesAlgorithm::activate[abi:cxx11](Graph const&)
+  0.00      0.00     0.00        3     0.00     0.00  DSU::DSU(int)
+  0.00      0.00     0.00        3     0.00     0.00  Graph::clean(int)
+  0.00      0.00     0.00        3     0.00     0.00  std::vector<int, std::allocator<int> >::_M_fill_assign(unsigned long, int const&)
+  0.00      0.00     0.00        3     0.00     0.00  std::vector<int, std::allocator<int> >::_M_default_append(unsigned long)
+  0.00      0.00     0.00        3     0.00     0.00  std::vector<int, std::allocator<int> >::operator=(std::vector<int, std::allocator<int> > const&)
+  0.00      0.00     0.00        3     0.00     0.00  void std::__insertion_sort<__gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, __gnu_cxx::__ops::_Iter_less_iter>(__gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, __gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, __gnu_cxx::__ops::_Iter_less_iter)
+  0.00      0.00     0.00        3     0.00     0.00  void std::__introsort_loop<__gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, long, __gnu_cxx::__ops::_Iter_less_iter>(__gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, __gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, long, __gnu_cxx::__ops::_Iter_less_iter)
+  0.00      0.00     0.00        2     0.00     0.00  ClientHandler::clean[abi:cxx11]()
+  0.00      0.00     0.00        1     0.00     0.00  ClientData::ClientData(int)
+  0.00      0.00     0.00        1     0.00     0.00  ClientHandler::handleClient(void*)
+  0.00      0.00     0.00        1     0.00     0.00  ClientHandler::handle()
+  0.00      0.00     0.00        1     0.00     0.00  ClientHandler::random[abi:cxx11]()
+  0.00      0.00     0.00        1     0.00     0.00  ClientHandler::ClientHandler(ClientData*)
+  0.00      0.00     0.00        1     0.00     0.00  ClientHandler::~ClientHandler()
+  0.00      0.00     0.00        1     0.00     0.00  EulerAlgorithm::EulerAlgorithm()
+  0.00      0.00     0.00        1     0.00     0.00  MSTWeightAlgorithm::MSTWeightAlgorithm()
+  0.00      0.00     0.00        1     0.00     0.00  MaxCliqueAlgorithm::MaxCliqueAlgorithm()
+  0.00      0.00     0.00        1     0.00     0.00  GraphAlgorithmFactory::GraphAlgorithmFactory()
+  0.00      0.00     0.00        1     0.00     0.00  HamiltonCircuitAlgorithm::HamiltonCircuitAlgorithm()
+  0.00      0.00     0.00        1     0.00     0.00  NumberOfCliquesAlgorithm::NumberOfCliquesAlgorithm()
+  0.00      0.00     0.00        1     0.00     0.00  Graph::Graph(int)
+  0.00      0.00     0.00        1     0.00     0.00  Server::run()
+  0.00      0.00     0.00        1     0.00     0.00  std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > >::_M_get_insert_unique_pos(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00      0.00     0.00        1     0.00     0.00  std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > >::_M_erase(std::_Rb_tree_node<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >*)
+  0.00      0.00     0.00        1     0.00     0.00  operator<<(std::ostream&, Graph const&)
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2022 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 4 byte(s) no time propagated
+
+index % time    self  children    called     name
+                0.00    0.00       7/177         HamiltonCircuitAlgorithm::hamiltonianDFS(int, int, std::vector<int, std::allocator<int> >&, std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >&, Graph const&) [39]
+                0.00    0.00     170/177         GraphUtilities::bronKerbosch(std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, int&, bool, std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >&, Graph const&) [24]
+[8]      0.0    0.00    0.00     177         void std::vector<int, std::allocator<int> >::_M_realloc_insert<int const&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [8]
+-----------------------------------------------
+                0.00    0.00      56/56          GraphUtilities::bronKerbosch(std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, int&, bool, std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >&, Graph const&) [24]
+[9]      0.0    0.00    0.00      56         __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > std::__remove_if<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__ops::_Iter_equals_val<int const> >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__ops::_Iter_equals_val<int const>) [9]
+-----------------------------------------------
+                0.00    0.00      36/36          ClientHandler::activate[abi:cxx11]() [33]
+[10]     0.0    0.00    0.00      36         void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*, std::forward_iterator_tag) [10]
+-----------------------------------------------
+                                  11             DSU::find(int) [11]
+                0.00    0.00      28/28          DSU::unite(int, int) [17]
+[11]     0.0    0.00    0.00      28+11      DSU::find(int) [11]
+                                  11             DSU::find(int) [11]
+-----------------------------------------------
+                0.00    0.00       3/25          HamiltonCircuitAlgorithm::findHamiltonCircuit(Graph const&) [40]
+                0.00    0.00       3/25          MaxCliqueAlgorithm::findMaxClique(Graph const&) [36]
+                0.00    0.00       3/25          MSTWeightAlgorithm::findMstWeight(Graph const&) [34]
+                0.00    0.00       3/25          NumberOfCliquesAlgorithm::findNumberOfCliques(Graph const&) [42]
+                0.00    0.00      13/25          HamiltonCircuitAlgorithm::hamiltonianDFS(int, int, std::vector<int, std::allocator<int> >&, std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >&, Graph const&) [39]
+[12]     0.0    0.00    0.00      25         Graph::getSize() const [12]
+-----------------------------------------------
+                0.00    0.00       1/23          ClientHandler::random[abi:cxx11]() [55]
+                0.00    0.00       1/23          ClientHandler::handleCommand[abi:cxx11](char*) [14]
+                0.00    0.00       2/23          ClientHandler::clean[abi:cxx11]() [51]
+                0.00    0.00       4/23          ClientHandler::activate[abi:cxx11]() [33]
+                0.00    0.00       5/23          ClientHandler::add[abi:cxx11]() [25]
+                0.00    0.00       5/23          ClientHandler::addw[abi:cxx11]() [26]
+                0.00    0.00       5/23          GraphAlgorithmFactory::GraphAlgorithmFactory() [61]
+[13]     0.0    0.00    0.00      23         void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) [13]
+-----------------------------------------------
+                0.00    0.00      17/17          ClientHandler::handle() [54]
+[14]     0.0    0.00    0.00      17         ClientHandler::handleCommand[abi:cxx11](char*) [14]
+                0.00    0.00       5/5           ClientHandler::add[abi:cxx11]() [25]
+                0.00    0.00       5/5           ClientHandler::addw[abi:cxx11]() [26]
+                0.00    0.00       3/3           ClientHandler::activate[abi:cxx11]() [33]
+                0.00    0.00       2/2           ClientHandler::clean[abi:cxx11]() [51]
+                0.00    0.00       1/23          void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) [13]
+                0.00    0.00       1/1           ClientHandler::random[abi:cxx11]() [55]
+-----------------------------------------------
+                0.00    0.00       5/17          GraphAlgorithmFactory::GraphAlgorithmFactory() [61]
+                0.00    0.00      12/17          std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > >::find(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [21]
+[15]     0.0    0.00    0.00      17         std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > >::_M_lower_bound(std::_Rb_tree_node<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >*, std::_Rb_tree_node_base*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [15]
+-----------------------------------------------
+                0.00    0.00       5/16          ClientHandler::add[abi:cxx11]() [25]
+                0.00    0.00       5/16          ClientHandler::addw[abi:cxx11]() [26]
+                0.00    0.00       6/16          ClientHandler::random[abi:cxx11]() [55]
+[16]     0.0    0.00    0.00      16         Graph::addEdge(int, int, int) [16]
+                0.00    0.00       4/4           void std::vector<Edge, std::allocator<Edge> >::_M_realloc_insert<Edge>(__gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, Edge&&) [31]
+-----------------------------------------------
+                0.00    0.00      14/14          MSTWeightAlgorithm::findMstWeight(Graph const&) [34]
+[17]     0.0    0.00    0.00      14         DSU::unite(int, int) [17]
+                0.00    0.00      28/28          DSU::find(int) [11]
+-----------------------------------------------
+                0.00    0.00      12/12          std::thread::_State_impl<std::thread::_Invoker<std::tuple<void* (*)(void*), ActivateAlgoArgs*> > >::_M_run() [91]
+[18]     0.0    0.00    0.00      12         ClientHandler::activateAlgo(void*) [18]
+                0.00    0.00       3/3           MaxCliqueAlgorithm::activate[abi:cxx11](Graph const&) [37]
+                0.00    0.00       3/3           NumberOfCliquesAlgorithm::activate[abi:cxx11](Graph const&) [43]
+                0.00    0.00       3/3           MSTWeightAlgorithm::activate[abi:cxx11](Graph const&) [35]
+                0.00    0.00       3/3           HamiltonCircuitAlgorithm::activate[abi:cxx11](Graph const&) [41]
+-----------------------------------------------
+                0.00    0.00      12/12          ClientHandler::activate[abi:cxx11]() [33]
+[19]     0.0    0.00    0.00      12         GraphAlgorithmFactory::getGraphAlgorithm(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [19]
+                0.00    0.00      12/12          std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > >::find(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [21]
+-----------------------------------------------
+                0.00    0.00       3/12          MSTWeightAlgorithm::findMstWeight(Graph const&) [34]
+                0.00    0.00       9/12          GraphUtilities::fillAdjMatrix(std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >&, Graph const&) [23]
+[20]     0.0    0.00    0.00      12         Graph::getEdges() const [20]
+-----------------------------------------------
+                0.00    0.00      12/12          GraphAlgorithmFactory::getGraphAlgorithm(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [19]
+[21]     0.0    0.00    0.00      12         std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > >::find(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [21]
+                0.00    0.00      12/17          std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > >::_M_lower_bound(std::_Rb_tree_node<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >*, std::_Rb_tree_node_base*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [15]
+-----------------------------------------------
+                0.00    0.00      10/10          void std::__insertion_sort<__gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, __gnu_cxx::__ops::_Iter_less_iter>(__gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, __gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, __gnu_cxx::__ops::_Iter_less_iter) [49]
+[22]     0.0    0.00    0.00      10         void std::__unguarded_linear_insert<__gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, __gnu_cxx::__ops::_Val_less_iter>(__gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, __gnu_cxx::__ops::_Val_less_iter) [22]
+-----------------------------------------------
+                0.00    0.00       3/9           HamiltonCircuitAlgorithm::findHamiltonCircuit(Graph const&) [40]
+                0.00    0.00       3/9           MaxCliqueAlgorithm::findMaxClique(Graph const&) [36]
+                0.00    0.00       3/9           NumberOfCliquesAlgorithm::findNumberOfCliques(Graph const&) [42]
+[23]     0.0    0.00    0.00       9         GraphUtilities::fillAdjMatrix(std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >&, Graph const&) [23]
+                0.00    0.00       9/12          Graph::getEdges() const [20]
+-----------------------------------------------
+                                  56             GraphUtilities::bronKerbosch(std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, int&, bool, std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >&, Graph const&) [24]
+                0.00    0.00       3/6           MaxCliqueAlgorithm::findMaxClique(Graph const&) [36]
+                0.00    0.00       3/6           NumberOfCliquesAlgorithm::findNumberOfCliques(Graph const&) [42]
+[24]     0.0    0.00    0.00       6+56      GraphUtilities::bronKerbosch(std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, int&, bool, std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >&, Graph const&) [24]
+                0.00    0.00     170/177         void std::vector<int, std::allocator<int> >::_M_realloc_insert<int const&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [8]
+                0.00    0.00      56/56          __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > std::__remove_if<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__ops::_Iter_equals_val<int const> >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__ops::_Iter_equals_val<int const>) [9]
+                0.00    0.00       3/3           std::vector<int, std::allocator<int> >::operator=(std::vector<int, std::allocator<int> > const&) [48]
+                                  56             GraphUtilities::bronKerbosch(std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, int&, bool, std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >&, Graph const&) [24]
+-----------------------------------------------
+                0.00    0.00       5/5           ClientHandler::handleCommand[abi:cxx11](char*) [14]
+[25]     0.0    0.00    0.00       5         ClientHandler::add[abi:cxx11]() [25]
+                0.00    0.00       5/16          Graph::addEdge(int, int, int) [16]
+                0.00    0.00       5/23          void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) [13]
+-----------------------------------------------
+                0.00    0.00       5/5           ClientHandler::handleCommand[abi:cxx11](char*) [14]
+[26]     0.0    0.00    0.00       5         ClientHandler::addw[abi:cxx11]() [26]
+                0.00    0.00       5/16          Graph::addEdge(int, int, int) [16]
+                0.00    0.00       5/23          void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) [13]
+-----------------------------------------------
+                0.00    0.00       1/5           EulerAlgorithm::EulerAlgorithm() [58]
+                0.00    0.00       1/5           HamiltonCircuitAlgorithm::HamiltonCircuitAlgorithm() [62]
+                0.00    0.00       1/5           MaxCliqueAlgorithm::MaxCliqueAlgorithm() [60]
+                0.00    0.00       1/5           MSTWeightAlgorithm::MSTWeightAlgorithm() [59]
+                0.00    0.00       1/5           NumberOfCliquesAlgorithm::NumberOfCliquesAlgorithm() [63]
+[27]     0.0    0.00    0.00       5         GraphAlgorithm::GraphAlgorithm() [27]
+-----------------------------------------------
+                0.00    0.00       2/5           HamiltonCircuitAlgorithm::hamiltonianDFS(int, int, std::vector<int, std::allocator<int> >&, std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >&, Graph const&) [39]
+                0.00    0.00       3/5           HamiltonCircuitAlgorithm::findHamiltonCircuit(Graph const&) [40]
+[28]     0.0    0.00    0.00       5         int& std::vector<int, std::allocator<int> >::emplace_back<int>(int&&) [28]
+                0.00    0.00       4/4           void std::vector<int, std::allocator<int> >::_M_realloc_insert<int>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int&&) [32]
+-----------------------------------------------
+                0.00    0.00       5/5           GraphAlgorithmFactory::GraphAlgorithmFactory() [61]
+[29]     0.0    0.00    0.00       5         std::_Rb_tree_iterator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > >::_M_emplace_hint_unique<std::piecewise_construct_t const&, std::tuple<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&>, std::tuple<> >(std::_Rb_tree_const_iterator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::piecewise_construct_t const&, std::tuple<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&>&&, std::tuple<>&&) [29]
+                0.00    0.00       5/5           std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > >::_M_get_insert_hint_unique_pos(std::_Rb_tree_const_iterator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [30]
+-----------------------------------------------
+                0.00    0.00       5/5           std::_Rb_tree_iterator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > >::_M_emplace_hint_unique<std::piecewise_construct_t const&, std::tuple<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&>, std::tuple<> >(std::_Rb_tree_const_iterator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::piecewise_construct_t const&, std::tuple<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&>&&, std::tuple<>&&) [29]
+[30]     0.0    0.00    0.00       5         std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > >::_M_get_insert_hint_unique_pos(std::_Rb_tree_const_iterator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [30]
+                0.00    0.00       1/1           std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > >::_M_get_insert_unique_pos(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [66]
+-----------------------------------------------
+                0.00    0.00       4/4           Graph::addEdge(int, int, int) [16]
+[31]     0.0    0.00    0.00       4         void std::vector<Edge, std::allocator<Edge> >::_M_realloc_insert<Edge>(__gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, Edge&&) [31]
+-----------------------------------------------
+                0.00    0.00       4/4           int& std::vector<int, std::allocator<int> >::emplace_back<int>(int&&) [28]
+[32]     0.0    0.00    0.00       4         void std::vector<int, std::allocator<int> >::_M_realloc_insert<int>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int&&) [32]
+-----------------------------------------------
+                0.00    0.00       3/3           ClientHandler::handleCommand[abi:cxx11](char*) [14]
+[33]     0.0    0.00    0.00       3         ClientHandler::activate[abi:cxx11]() [33]
+                0.00    0.00      36/36          void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*, std::forward_iterator_tag) [10]
+                0.00    0.00      12/12          GraphAlgorithmFactory::getGraphAlgorithm(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [19]
+                0.00    0.00       4/23          void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) [13]
+                0.00    0.00       3/3           GraphAlgorithmFactory::getGraphAlgorithmFactory() [38]
+-----------------------------------------------
+                0.00    0.00       3/3           MSTWeightAlgorithm::activate[abi:cxx11](Graph const&) [35]
+[34]     0.0    0.00    0.00       3         MSTWeightAlgorithm::findMstWeight(Graph const&) [34]
+                0.00    0.00      14/14          DSU::unite(int, int) [17]
+                0.00    0.00       3/12          Graph::getEdges() const [20]
+                0.00    0.00       3/25          Graph::getSize() const [12]
+                0.00    0.00       3/3           void std::__introsort_loop<__gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, long, __gnu_cxx::__ops::_Iter_less_iter>(__gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, __gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, long, __gnu_cxx::__ops::_Iter_less_iter) [50]
+                0.00    0.00       3/3           void std::__insertion_sort<__gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, __gnu_cxx::__ops::_Iter_less_iter>(__gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, __gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, __gnu_cxx::__ops::_Iter_less_iter) [49]
+                0.00    0.00       3/3           DSU::DSU(int) [44]
+-----------------------------------------------
+                0.00    0.00       3/3           ClientHandler::activateAlgo(void*) [18]
+[35]     0.0    0.00    0.00       3         MSTWeightAlgorithm::activate[abi:cxx11](Graph const&) [35]
+                0.00    0.00       3/3           MSTWeightAlgorithm::findMstWeight(Graph const&) [34]
+-----------------------------------------------
+                0.00    0.00       3/3           MaxCliqueAlgorithm::activate[abi:cxx11](Graph const&) [37]
+[36]     0.0    0.00    0.00       3         MaxCliqueAlgorithm::findMaxClique(Graph const&) [36]
+                0.00    0.00       3/25          Graph::getSize() const [12]
+                0.00    0.00       3/6           GraphUtilities::bronKerbosch(std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, int&, bool, std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >&, Graph const&) [24]
+                0.00    0.00       3/9           GraphUtilities::fillAdjMatrix(std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >&, Graph const&) [23]
+-----------------------------------------------
+                0.00    0.00       3/3           ClientHandler::activateAlgo(void*) [18]
+[37]     0.0    0.00    0.00       3         MaxCliqueAlgorithm::activate[abi:cxx11](Graph const&) [37]
+                0.00    0.00       3/3           MaxCliqueAlgorithm::findMaxClique(Graph const&) [36]
+-----------------------------------------------
+                0.00    0.00       3/3           ClientHandler::activate[abi:cxx11]() [33]
+[38]     0.0    0.00    0.00       3         GraphAlgorithmFactory::getGraphAlgorithmFactory() [38]
+                0.00    0.00       1/1           GraphAlgorithmFactory::GraphAlgorithmFactory() [61]
+-----------------------------------------------
+                                  10             HamiltonCircuitAlgorithm::hamiltonianDFS(int, int, std::vector<int, std::allocator<int> >&, std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >&, Graph const&) [39]
+                0.00    0.00       3/3           HamiltonCircuitAlgorithm::findHamiltonCircuit(Graph const&) [40]
+[39]     0.0    0.00    0.00       3+10      HamiltonCircuitAlgorithm::hamiltonianDFS(int, int, std::vector<int, std::allocator<int> >&, std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >&, Graph const&) [39]
+                0.00    0.00      13/25          Graph::getSize() const [12]
+                0.00    0.00       7/177         void std::vector<int, std::allocator<int> >::_M_realloc_insert<int const&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [8]
+                0.00    0.00       2/5           int& std::vector<int, std::allocator<int> >::emplace_back<int>(int&&) [28]
+                                  10             HamiltonCircuitAlgorithm::hamiltonianDFS(int, int, std::vector<int, std::allocator<int> >&, std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >&, Graph const&) [39]
+-----------------------------------------------
+                0.00    0.00       3/3           HamiltonCircuitAlgorithm::activate[abi:cxx11](Graph const&) [41]
+[40]     0.0    0.00    0.00       3         HamiltonCircuitAlgorithm::findHamiltonCircuit(Graph const&) [40]
+                0.00    0.00       3/25          Graph::getSize() const [12]
+                0.00    0.00       3/5           int& std::vector<int, std::allocator<int> >::emplace_back<int>(int&&) [28]
+                0.00    0.00       3/3           HamiltonCircuitAlgorithm::hamiltonianDFS(int, int, std::vector<int, std::allocator<int> >&, std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >&, Graph const&) [39]
+                0.00    0.00       3/9           GraphUtilities::fillAdjMatrix(std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >&, Graph const&) [23]
+-----------------------------------------------
+                0.00    0.00       3/3           ClientHandler::activateAlgo(void*) [18]
+[41]     0.0    0.00    0.00       3         HamiltonCircuitAlgorithm::activate[abi:cxx11](Graph const&) [41]
+                0.00    0.00       3/3           HamiltonCircuitAlgorithm::findHamiltonCircuit(Graph const&) [40]
+-----------------------------------------------
+                0.00    0.00       3/3           NumberOfCliquesAlgorithm::activate[abi:cxx11](Graph const&) [43]
+[42]     0.0    0.00    0.00       3         NumberOfCliquesAlgorithm::findNumberOfCliques(Graph const&) [42]
+                0.00    0.00       3/25          Graph::getSize() const [12]
+                0.00    0.00       3/6           GraphUtilities::bronKerbosch(std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, int&, bool, std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >&, Graph const&) [24]
+                0.00    0.00       3/9           GraphUtilities::fillAdjMatrix(std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >&, Graph const&) [23]
+-----------------------------------------------
+                0.00    0.00       3/3           ClientHandler::activateAlgo(void*) [18]
+[43]     0.0    0.00    0.00       3         NumberOfCliquesAlgorithm::activate[abi:cxx11](Graph const&) [43]
+                0.00    0.00       3/3           NumberOfCliquesAlgorithm::findNumberOfCliques(Graph const&) [42]
+-----------------------------------------------
+                0.00    0.00       3/3           MSTWeightAlgorithm::findMstWeight(Graph const&) [34]
+[44]     0.0    0.00    0.00       3         DSU::DSU(int) [44]
+                0.00    0.00       3/3           std::vector<int, std::allocator<int> >::_M_fill_assign(unsigned long, int const&) [46]
+                0.00    0.00       3/3           std::vector<int, std::allocator<int> >::_M_default_append(unsigned long) [47]
+-----------------------------------------------
+                0.00    0.00       1/3           ClientHandler::random[abi:cxx11]() [55]
+                0.00    0.00       2/3           ClientHandler::clean[abi:cxx11]() [51]
+[45]     0.0    0.00    0.00       3         Graph::clean(int) [45]
+-----------------------------------------------
+                0.00    0.00       3/3           DSU::DSU(int) [44]
+[46]     0.0    0.00    0.00       3         std::vector<int, std::allocator<int> >::_M_fill_assign(unsigned long, int const&) [46]
+-----------------------------------------------
+                0.00    0.00       3/3           DSU::DSU(int) [44]
+[47]     0.0    0.00    0.00       3         std::vector<int, std::allocator<int> >::_M_default_append(unsigned long) [47]
+-----------------------------------------------
+                0.00    0.00       3/3           GraphUtilities::bronKerbosch(std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, int&, bool, std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >&, Graph const&) [24]
+[48]     0.0    0.00    0.00       3         std::vector<int, std::allocator<int> >::operator=(std::vector<int, std::allocator<int> > const&) [48]
+-----------------------------------------------
+                0.00    0.00       3/3           MSTWeightAlgorithm::findMstWeight(Graph const&) [34]
+[49]     0.0    0.00    0.00       3         void std::__insertion_sort<__gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, __gnu_cxx::__ops::_Iter_less_iter>(__gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, __gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, __gnu_cxx::__ops::_Iter_less_iter) [49]
+                0.00    0.00      10/10          void std::__unguarded_linear_insert<__gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, __gnu_cxx::__ops::_Val_less_iter>(__gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, __gnu_cxx::__ops::_Val_less_iter) [22]
+-----------------------------------------------
+                0.00    0.00       3/3           MSTWeightAlgorithm::findMstWeight(Graph const&) [34]
+[50]     0.0    0.00    0.00       3         void std::__introsort_loop<__gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, long, __gnu_cxx::__ops::_Iter_less_iter>(__gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, __gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, long, __gnu_cxx::__ops::_Iter_less_iter) [50]
+-----------------------------------------------
+                0.00    0.00       2/2           ClientHandler::handleCommand[abi:cxx11](char*) [14]
+[51]     0.0    0.00    0.00       2         ClientHandler::clean[abi:cxx11]() [51]
+                0.00    0.00       2/3           Graph::clean(int) [45]
+                0.00    0.00       2/23          void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) [13]
+-----------------------------------------------
+                0.00    0.00       1/1           Server::run() [65]
+[52]     0.0    0.00    0.00       1         ClientData::ClientData(int) [52]
+-----------------------------------------------
+                0.00    0.00       1/1           std::thread::_State_impl<std::thread::_Invoker<std::tuple<void* (*)(void*), ClientData*> > >::_M_run() [88]
+[53]     0.0    0.00    0.00       1         ClientHandler::handleClient(void*) [53]
+                0.00    0.00       1/1           ClientHandler::ClientHandler(ClientData*) [56]
+                0.00    0.00       1/1           ClientHandler::~ClientHandler() [57]
+                0.00    0.00       1/1           ClientHandler::handle() [54]
+-----------------------------------------------
+                0.00    0.00       1/1           ClientHandler::handleClient(void*) [53]
+[54]     0.0    0.00    0.00       1         ClientHandler::handle() [54]
+                0.00    0.00      17/17          ClientHandler::handleCommand[abi:cxx11](char*) [14]
+-----------------------------------------------
+                0.00    0.00       1/1           ClientHandler::handleCommand[abi:cxx11](char*) [14]
+[55]     0.0    0.00    0.00       1         ClientHandler::random[abi:cxx11]() [55]
+                0.00    0.00       6/16          Graph::addEdge(int, int, int) [16]
+                0.00    0.00       1/3           Graph::clean(int) [45]
+                0.00    0.00       1/1           operator<<(std::ostream&, Graph const&) [68]
+                0.00    0.00       1/23          void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) [13]
+-----------------------------------------------
+                0.00    0.00       1/1           ClientHandler::handleClient(void*) [53]
+[56]     0.0    0.00    0.00       1         ClientHandler::ClientHandler(ClientData*) [56]
+                0.00    0.00       1/1           Graph::Graph(int) [64]
+-----------------------------------------------
+                0.00    0.00       1/1           ClientHandler::handleClient(void*) [53]
+[57]     0.0    0.00    0.00       1         ClientHandler::~ClientHandler() [57]
+-----------------------------------------------
+                0.00    0.00       1/1           GraphAlgorithmFactory::GraphAlgorithmFactory() [61]
+[58]     0.0    0.00    0.00       1         EulerAlgorithm::EulerAlgorithm() [58]
+                0.00    0.00       1/5           GraphAlgorithm::GraphAlgorithm() [27]
+-----------------------------------------------
+                0.00    0.00       1/1           GraphAlgorithmFactory::GraphAlgorithmFactory() [61]
+[59]     0.0    0.00    0.00       1         MSTWeightAlgorithm::MSTWeightAlgorithm() [59]
+                0.00    0.00       1/5           GraphAlgorithm::GraphAlgorithm() [27]
+-----------------------------------------------
+                0.00    0.00       1/1           GraphAlgorithmFactory::GraphAlgorithmFactory() [61]
+[60]     0.0    0.00    0.00       1         MaxCliqueAlgorithm::MaxCliqueAlgorithm() [60]
+                0.00    0.00       1/5           GraphAlgorithm::GraphAlgorithm() [27]
+-----------------------------------------------
+                0.00    0.00       1/1           GraphAlgorithmFactory::getGraphAlgorithmFactory() [38]
+[61]     0.0    0.00    0.00       1         GraphAlgorithmFactory::GraphAlgorithmFactory() [61]
+                0.00    0.00       5/23          void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) [13]
+                0.00    0.00       5/17          std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > >::_M_lower_bound(std::_Rb_tree_node<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >*, std::_Rb_tree_node_base*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [15]
+                0.00    0.00       5/5           std::_Rb_tree_iterator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > >::_M_emplace_hint_unique<std::piecewise_construct_t const&, std::tuple<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&>, std::tuple<> >(std::_Rb_tree_const_iterator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::piecewise_construct_t const&, std::tuple<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&>&&, std::tuple<>&&) [29]
+                0.00    0.00       1/1           EulerAlgorithm::EulerAlgorithm() [58]
+                0.00    0.00       1/1           HamiltonCircuitAlgorithm::HamiltonCircuitAlgorithm() [62]
+                0.00    0.00       1/1           MaxCliqueAlgorithm::MaxCliqueAlgorithm() [60]
+                0.00    0.00       1/1           MSTWeightAlgorithm::MSTWeightAlgorithm() [59]
+                0.00    0.00       1/1           NumberOfCliquesAlgorithm::NumberOfCliquesAlgorithm() [63]
+-----------------------------------------------
+                0.00    0.00       1/1           GraphAlgorithmFactory::GraphAlgorithmFactory() [61]
+[62]     0.0    0.00    0.00       1         HamiltonCircuitAlgorithm::HamiltonCircuitAlgorithm() [62]
+                0.00    0.00       1/5           GraphAlgorithm::GraphAlgorithm() [27]
+-----------------------------------------------
+                0.00    0.00       1/1           GraphAlgorithmFactory::GraphAlgorithmFactory() [61]
+[63]     0.0    0.00    0.00       1         NumberOfCliquesAlgorithm::NumberOfCliquesAlgorithm() [63]
+                0.00    0.00       1/5           GraphAlgorithm::GraphAlgorithm() [27]
+-----------------------------------------------
+                0.00    0.00       1/1           ClientHandler::ClientHandler(ClientData*) [56]
+[64]     0.0    0.00    0.00       1         Graph::Graph(int) [64]
+-----------------------------------------------
+                0.00    0.00       1/1           main [6]
+[65]     0.0    0.00    0.00       1         Server::run() [65]
+                0.00    0.00       1/1           ClientData::ClientData(int) [52]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > >::_M_get_insert_hint_unique_pos(std::_Rb_tree_const_iterator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [30]
+[66]     0.0    0.00    0.00       1         std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > >::_M_get_insert_unique_pos(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [66]
+-----------------------------------------------
+                                   5             std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > >::_M_erase(std::_Rb_tree_node<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >*) [67]
+                0.00    0.00       1/1           GraphAlgorithmFactory::~GraphAlgorithmFactory() [81]
+[67]     0.0    0.00    0.00       1+5       std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > >::_M_erase(std::_Rb_tree_node<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >*) [67]
+                                   5             std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > >::_M_erase(std::_Rb_tree_node<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >*) [67]
+-----------------------------------------------
+                0.00    0.00       1/1           ClientHandler::random[abi:cxx11]() [55]
+[68]     0.0    0.00    0.00       1         operator<<(std::ostream&, Graph const&) [68]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2022 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [52] ClientData::ClientData(int) [60] MaxCliqueAlgorithm::MaxCliqueAlgorithm() [28] int& std::vector<int, std::allocator<int> >::emplace_back<int>(int&&)
+  [18] ClientHandler::activateAlgo(void*) [19] GraphAlgorithmFactory::getGraphAlgorithm(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [46] std::vector<int, std::allocator<int> >::_M_fill_assign(unsigned long, int const&)
+  [53] ClientHandler::handleClient(void*) [38] GraphAlgorithmFactory::getGraphAlgorithmFactory() [47] std::vector<int, std::allocator<int> >::_M_default_append(unsigned long)
+  [14] ClientHandler::handleCommand[abi:cxx11](char*) [61] GraphAlgorithmFactory::GraphAlgorithmFactory() [8] void std::vector<int, std::allocator<int> >::_M_realloc_insert<int const&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&)
+  [25] ClientHandler::add[abi:cxx11]() [39] HamiltonCircuitAlgorithm::hamiltonianDFS(int, int, std::vector<int, std::allocator<int> >&, std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >&, Graph const&) [32] void std::vector<int, std::allocator<int> >::_M_realloc_insert<int>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int&&)
+  [26] ClientHandler::addw[abi:cxx11]() [40] HamiltonCircuitAlgorithm::findHamiltonCircuit(Graph const&) [48] std::vector<int, std::allocator<int> >::operator=(std::vector<int, std::allocator<int> > const&)
+  [51] ClientHandler::clean[abi:cxx11]() [41] HamiltonCircuitAlgorithm::activate[abi:cxx11](Graph const&) [13] void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag)
+  [54] ClientHandler::handle() [62] HamiltonCircuitAlgorithm::HamiltonCircuitAlgorithm() [10] void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*, std::forward_iterator_tag)
+  [55] ClientHandler::random[abi:cxx11]() [42] NumberOfCliquesAlgorithm::findNumberOfCliques(Graph const&) [15] std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > >::_M_lower_bound(std::_Rb_tree_node<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >*, std::_Rb_tree_node_base*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  [33] ClientHandler::activate[abi:cxx11]() [43] NumberOfCliquesAlgorithm::activate[abi:cxx11](Graph const&) [29] std::_Rb_tree_iterator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > >::_M_emplace_hint_unique<std::piecewise_construct_t const&, std::tuple<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&>, std::tuple<> >(std::_Rb_tree_const_iterator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::piecewise_construct_t const&, std::tuple<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&>&&, std::tuple<>&&)
+  [56] ClientHandler::ClientHandler(ClientData*) [63] NumberOfCliquesAlgorithm::NumberOfCliquesAlgorithm() [66] std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > >::_M_get_insert_unique_pos(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  [57] ClientHandler::~ClientHandler() [11] DSU::find(int) [30] std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > >::_M_get_insert_hint_unique_pos(std::_Rb_tree_const_iterator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  [58] EulerAlgorithm::EulerAlgorithm() [17] DSU::unite(int, int) [21] std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > >::find(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  [27] GraphAlgorithm::GraphAlgorithm() [44] DSU::DSU(int) [67] std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> > >::_M_erase(std::_Rb_tree_node<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, GraphAlgorithm*> >*)
+  [24] GraphUtilities::bronKerbosch(std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, int&, bool, std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >&, Graph const&) [45] Graph::clean(int) [9] __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > std::__remove_if<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__ops::_Iter_equals_val<int const> >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__ops::_Iter_equals_val<int const>)
+  [23] GraphUtilities::fillAdjMatrix(std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >&, Graph const&) [16] Graph::addEdge(int, int, int) [49] void std::__insertion_sort<__gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, __gnu_cxx::__ops::_Iter_less_iter>(__gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, __gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, __gnu_cxx::__ops::_Iter_less_iter)
+  [34] MSTWeightAlgorithm::findMstWeight(Graph const&) [64] Graph::Graph(int) [50] void std::__introsort_loop<__gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, long, __gnu_cxx::__ops::_Iter_less_iter>(__gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, __gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, long, __gnu_cxx::__ops::_Iter_less_iter)
+  [35] MSTWeightAlgorithm::activate[abi:cxx11](Graph const&) [65] Server::run() [22] void std::__unguarded_linear_insert<__gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, __gnu_cxx::__ops::_Val_less_iter>(__gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, __gnu_cxx::__ops::_Val_less_iter)
+  [59] MSTWeightAlgorithm::MSTWeightAlgorithm() [12] Graph::getSize() const [68] operator<<(std::ostream&, Graph const&)
+  [36] MaxCliqueAlgorithm::findMaxClique(Graph const&) [20] Graph::getEdges() const
+  [37] MaxCliqueAlgorithm::activate[abi:cxx11](Graph const&) [31] void std::vector<Edge, std::allocator<Edge> >::_M_realloc_insert<Edge>(__gnu_cxx::__normal_iterator<Edge*, std::vector<Edge, std::allocator<Edge> > >, Edge&&)

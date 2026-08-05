@@ -1,0 +1,82 @@
+Capturing coverage data from .
+Subroutine read_intermediate_text redefined at /usr/bin/geninfo line 2623.
+Subroutine read_intermediate_json redefined at /usr/bin/geninfo line 2655.
+Subroutine intermediate_text_to_info redefined at /usr/bin/geninfo line 2703.
+Subroutine intermediate_json_to_info redefined at /usr/bin/geninfo line 2792.
+Subroutine get_output_fd redefined at /usr/bin/geninfo line 2872.
+Subroutine print_gcov_warnings redefined at /usr/bin/geninfo line 2900.
+Subroutine process_intermediate redefined at /usr/bin/geninfo line 2930.
+Found gcov version: 11.4.0
+Using intermediate gcov format
+Scanning . for .gcda files ...
+Found 11 data files in .
+Processing a-ClientHandler.gcda
+Processing a-GraphAlgorithmFactory.gcda
+Processing a-Graph.gcda
+Processing a-GraphUtilities.gcda
+Processing a-EulerAlgorithm.gcda
+Processing a-MaxCliqueAlgorithm.gcda
+Processing a-MSTWeightAlgorithm.gcda
+Processing a-HamiltonCircuitAlgorithm.gcda
+Processing a-NumberOfCliquesAlgorithm.gcda
+Processing a-Server.gcda
+Processing a-GraphAlgorithm.gcda
+Finished .info-file creation
+
+noam@noam-ubuntu-22:~/Desktop/OS_updated/EX4/8/Server$ genhtml coverage.info --output-directory out_coverage
+
+Reading data file coverage.info
+Found 46 entries.
+Found common filename prefix "/usr/include/c++"
+Writing .css and .png files.
+Generating output.
+Processing file /home/noam/Desktop/OS_updated/EX4/8/Server/Graph.cpp
+Processing file /home/noam/Desktop/OS_updated/EX4/8/Server/GraphUtilities.cpp
+Processing file /home/noam/Desktop/OS_updated/EX4/8/Server/HamiltonCircuitAlgorithm.cpp
+Processing file /home/noam/Desktop/OS_updated/EX4/8/Server/MaxCliqueAlgorithm.cpp
+Processing file /home/noam/Desktop/OS_updated/EX4/8/Server/Server.cpp
+Processing file /home/noam/Desktop/OS_updated/EX4/8/Server/GraphAlgorithmFactory.cpp
+Processing file /home/noam/Desktop/OS_updated/EX4/8/Server/EulerAlgorithm.cpp
+Processing file /home/noam/Desktop/OS_updated/EX4/8/Server/NumberOfCliquesAlgorithm.cpp
+Processing file /home/noam/Desktop/OS_updated/EX4/8/Server/GraphAlgorithm.cpp
+Processing file /home/noam/Desktop/OS_updated/EX4/8/Server/MSTWeightAlgorithm.cpp
+Processing file /home/noam/Desktop/OS_updated/EX4/8/Server/ClientHandler.cpp
+Processing file 11/tuple
+Processing file 11/new
+Processing file 11/bits/char_traits.h
+Processing file 11/bits/stl_heap.h
+Processing file 11/bits/stl_construct.h
+Processing file 11/bits/allocator.h
+Processing file 11/bits/stl_numeric.h
+Processing file 11/bits/stl_stack.h
+Processing file 11/bits/move.h
+Processing file 11/bits/basic_string.h
+Processing file 11/bits/stl_function.h
+Processing file 11/bits/stl_iterator.h
+Processing file 11/bits/vector.tcc
+Processing file 11/bits/stl_iterator_base_types.h
+Processing file 11/bits/invoke.h
+Processing file 11/bits/std_thread.h
+Processing file 11/bits/alloc_traits.h
+Processing file 11/bits/stl_algo.h
+Processing file 11/bits/stl_algobase.h
+Processing file 11/bits/cpp_type_traits.h
+Processing file 11/bits/basic_string.tcc
+Processing file 11/bits/deque.tcc
+Processing file 11/bits/unique_ptr.h
+Processing file 11/bits/predefined_ops.h
+Processing file 11/bits/stl_iterator_base_funcs.h
+Processing file 11/bits/stl_deque.h
+Processing file 11/bits/stl_pair.h
+Processing file 11/bits/stl_tree.h
+Processing file 11/bits/stl_uninitialized.h
+Processing file 11/bits/stl_vector.h
+Processing file 11/bits/stl_map.h
+Processing file 11/ext/aligned_buffer.h
+Processing file 11/ext/new_allocator.h
+Processing file 11/ext/type_traits.h
+Processing file 11/ext/alloc_traits.h
+Writing directory view page.
+Overall coverage rate:
+  lines......: 66.8% (1110 of 1662 lines)
+  functions..: 75.0% (482 of 643 functions)

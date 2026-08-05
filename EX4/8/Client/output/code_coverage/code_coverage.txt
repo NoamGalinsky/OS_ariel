@@ -1,0 +1,30 @@
+Capturing coverage data from .
+Subroutine read_intermediate_text redefined at /usr/bin/geninfo line 2623.
+Subroutine read_intermediate_json redefined at /usr/bin/geninfo line 2655.
+Subroutine intermediate_text_to_info redefined at /usr/bin/geninfo line 2703.
+Subroutine intermediate_json_to_info redefined at /usr/bin/geninfo line 2792.
+Subroutine get_output_fd redefined at /usr/bin/geninfo line 2872.
+Subroutine print_gcov_warnings redefined at /usr/bin/geninfo line 2900.
+Subroutine process_intermediate redefined at /usr/bin/geninfo line 2930.
+Found gcov version: 11.4.0
+Using intermediate gcov format
+Scanning . for .gcda files ...
+Found 1 data files in .
+Processing a-Client.gcda
+Finished .info-file creation
+
+noam@noam-ubuntu-22:~/Desktop/OS_updated/EX4/8/Client$ genhtml coverage.info --output-directory out_coverage
+
+Reading data file coverage.info
+Found 4 entries.
+Found common filename prefix "/usr/include/c++/11"
+Writing .css and .png files.
+Generating output.
+Processing file /home/noam/Desktop/OS_updated/EX4/8/Client/Client.cpp
+Processing file bits/move.h
+Processing file bits/basic_string.h
+Processing file ext/new_allocator.h
+Writing directory view page.
+Overall coverage rate:
+  lines......: 80.0% (32 of 40 lines)
+  functions..: 57.1% (4 of 7 functions)

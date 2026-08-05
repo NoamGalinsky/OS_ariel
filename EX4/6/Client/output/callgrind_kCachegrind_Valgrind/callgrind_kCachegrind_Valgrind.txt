@@ -1,0 +1,26 @@
+==26899== Callgrind, a call-graph generating cache profiler
+==26899== Copyright (C) 2002-2017, and GNU GPL'd, by Josef Weidendorfer et al.
+==26899== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==26899== Command: ./a.out
+==26899== 
+==26899== For interactive control, run 'callgrind_control -h'.
+Command: clean 5
+add 0 1
+add 1 2
+add 2 3
+add 3 4
+add 4 0
+euler
+exit
+Graph cleaned
+Command: Added a new edge
+Command: Added a new edge
+Command: Added a new edge
+Command: Added a new edge
+Command: Added a new edge
+Command: 0 4 3 2 1 0 
+Command: ==26899== 
+==26899== Events    : Ir
+==26899== Collected : 2360969
+==26899== 
+==26899== I   refs:      2,360,969

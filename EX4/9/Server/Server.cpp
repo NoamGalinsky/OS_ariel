@@ -71,6 +71,7 @@ void Server::run()
             inet_ntoa(their_addr.sin_addr) << endl;
         thread t(ClientHandler::handleClient, new ClientData(new_fd));
         t.detach();
+        
     }
 }
 int main(int argc, char* argv[])

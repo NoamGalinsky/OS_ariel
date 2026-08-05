@@ -1,0 +1,56 @@
+server: got connection from 127.0.0.1
+lcov --capture --directory . --output-file coverage.info noam@noam-ubuntu-22:~/Desktop/OS_updated/EX4/6/Server$ lcov --capture --directory . --output-file coverage.info 
+Capturing coverage data from .
+Subroutine read_intermediate_text redefined at /usr/bin/geninfo line 2623.
+Subroutine read_intermediate_json redefined at /usr/bin/geninfo line 2655.
+Subroutine intermediate_text_to_info redefined at /usr/bin/geninfo line 2703.
+Subroutine intermediate_json_to_info redefined at /usr/bin/geninfo line 2792.
+Subroutine get_output_fd redefined at /usr/bin/geninfo line 2872.
+Subroutine print_gcov_warnings redefined at /usr/bin/geninfo line 2900.
+Subroutine process_intermediate redefined at /usr/bin/geninfo line 2930.
+Found gcov version: 11.4.0
+Using intermediate gcov format
+Scanning . for .gcda files ...
+Found 4 data files in .
+Processing a-Graph.gcda
+Processing a-EulerAlgorithm.gcda
+Processing a-Server.gcda
+Processing a-GraphAlgorithm.gcda
+Finished .info-file creation
+noam@noam-ubuntu-22:~/Desktop/OS_updated/EX4/6/Server$ genhtml coverage.info --output-directory out_coverage
+Reading data file coverage.info
+Found 27 entries.
+Found common filename prefix "/usr/include/c++"
+Writing .css and .png files.
+Generating output.
+Processing file /home/noam/Desktop/OS_updated/EX4/6/Server/EulerAlgorithm.cpp
+Processing file /home/noam/Desktop/OS_updated/EX4/6/Server/GraphAlgorithm.cpp
+Processing file /home/noam/Desktop/OS_updated/EX4/6/Server/Graph.cpp
+Processing file /home/noam/Desktop/OS_updated/EX4/6/Server/Server.cpp
+Processing file 11/new
+Processing file 11/bits/stl_construct.h
+Processing file 11/bits/stl_iterator_base_funcs.h
+Processing file 11/bits/stl_iterator_base_types.h
+Processing file 11/bits/stl_uninitialized.h
+Processing file 11/bits/basic_string.tcc
+Processing file 11/bits/deque.tcc
+Processing file 11/bits/move.h
+Processing file 11/bits/vector.tcc
+Processing file 11/bits/stl_deque.h
+Processing file 11/bits/allocator.h
+Processing file 11/bits/stl_iterator.h
+Processing file 11/bits/stl_algo.h
+Processing file 11/bits/basic_string.h
+Processing file 11/bits/alloc_traits.h
+Processing file 11/bits/char_traits.h
+Processing file 11/bits/stl_algobase.h
+Processing file 11/bits/cpp_type_traits.h
+Processing file 11/bits/stl_stack.h
+Processing file 11/bits/stl_vector.h
+Processing file 11/bits/predefined_ops.h
+Processing file 11/ext/new_allocator.h
+Processing file 11/ext/type_traits.h
+Writing directory view page.
+Overall coverage rate:
+  lines......: 76.4% (579 of 758 lines)
+  functions..: 87.7% (257 of 293 functions)

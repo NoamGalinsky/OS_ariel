@@ -4,3 +4,5 @@ server: Server.h Server.cpp EulerAlgorithm.h EulerAlgorithm.cpp GraphAlgorithm.h
 client: Client.h Client.cpp
 	g++ Client.cpp -o client
 
+clean:
+	rm a.out client server

@@ -1,0 +1,12 @@
+==27873== Callgrind, a call-graph generating cache profiler
+==27873== Copyright (C) 2002-2017, and GNU GPL'd, by Josef Weidendorfer et al.
+==27873== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==27873== Command: ./a.out
+==27873== 
+==27873== For interactive control, run 'callgrind_control -h'.
+server: got connection from 127.0.0.1
+==27873== 
+==27873== Events    : Ir
+==27873== Collected : 2433965
+==27873== 
+==27873== I   refs:      2,433,965
